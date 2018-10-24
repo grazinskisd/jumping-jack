@@ -556,7 +556,7 @@ TextMesh:
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 33
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 0
   m_Font: {fileID: 12800000, guid: e77c08390e685744194b40bd708bbf75, type: 3}
   m_Color:
@@ -642,7 +642,7 @@ TextMesh:
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 33
-  m_FontStyle: 1
+  m_FontStyle: 0
   m_RichText: 0
   m_Font: {fileID: 12800000, guid: e77c08390e685744194b40bd708bbf75, type: 3}
   m_Color:
