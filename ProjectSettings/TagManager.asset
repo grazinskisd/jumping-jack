@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Level
+    uniqueID: 1519003547
+    locked: 0
+  - name: UI
+    uniqueID: 3678329089
+    locked: 0
+  - name: Player
+    uniqueID: 347483145
+    locked: 0
