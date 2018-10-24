@@ -29,16 +29,6 @@ namespace JumpingJack
             _currentScore += ScoreIncrement * PlayerPrefsService.GetInt(Prefs.Level);
             PlayerPrefsService.SetInt(Prefs.Score, _currentScore);
             UpdateScoreText();
-            CheckIfNewHighscore();
-        }
-
-        private void CheckIfNewHighscore()
-        {
-            if(_currentScore > _currentHighscore)
-            {
-                PlayerPrefsService.SetInt(Prefs.Highscore, _currentScore);
-                _currentHighscore = _currentScore;
-            }
         }
 
         private void UpdateScoreText()
