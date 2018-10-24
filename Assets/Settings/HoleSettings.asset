@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2d56957c3d81f4583ac479c82d8580, type: 3}
   m_Name: HoleSettings
   m_EditorClassIdentifier: 
-  StartHoleHeightIndex: 6
   NumberOfHolesAtStart: 2
+  MaxHoleCount: 8
   Heights: {fileID: 11400000, guid: 0bb1b81cd516fb940a50dcad3156f74a, type: 2}
   LeftEnd: -5.32
   RightEnd: 5.32

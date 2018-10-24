@@ -6,6 +6,7 @@ namespace JumpingJack
     public class HoleSettings : ScriptableObject
     {
         public int NumberOfHolesAtStart;
+        public int MaxHoleCount;
         public PositionsScriptable Heights;
         public float LeftEnd;
         public float RightEnd;

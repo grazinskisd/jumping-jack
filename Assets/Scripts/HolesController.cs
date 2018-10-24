@@ -11,6 +11,7 @@ namespace JumpingJack
 
         private List<Hole> _holes = new List<Hole>();
         private int _direction = 1;
+        private int _holeCount = 0;
 
         private void Start()
         {
@@ -21,15 +22,19 @@ namespace JumpingJack
                 SetupNewHole(newHole);
                 UpdateDirection();
             }
-
+            _holeCount = Settings.NumberOfHolesAtStart;
             Player.OnJump += SpawnRandomHole;
         }
 
         private void SpawnRandomHole(Player sender)
         {
-            int holeIndex = Random.Range(0, Settings.Heights.Positions.Length);
-            SetupNewHole(SpawnHole(_direction, holeIndex, GetRandomHolePosition()));
-            UpdateDirection();
+            if (_holeCount < Settings.MaxHoleCount)
+            {
+                int holeIndex = Random.Range(0, Settings.Heights.Positions.Length);
+                SetupNewHole(SpawnHole(_direction, holeIndex, GetRandomHolePosition()));
+                UpdateDirection();
+                _holeCount++;
+            }
         }
 
         private float GetRandomHolePosition()
