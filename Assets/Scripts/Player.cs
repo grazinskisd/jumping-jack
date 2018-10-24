@@ -10,6 +10,7 @@ namespace JumpingJack
 
         public event PlayerEventHanlder OnJump;
         public event PlayerEventHanlder OnGroundReached;
+        public event PlayerEventHanlder OnTopReached;
 
         private int _previousHeightIndex;
         private int _currentHeightIndex;
@@ -28,6 +29,7 @@ namespace JumpingJack
 
             if (_isMovingVertically)
             {
+                // Gradually move player up or down
                 var desiredHeight = Settings.Heights.Positions[_currentHeightIndex].y;
                 int direction = (_currentHeightIndex - _previousHeightIndex) / Mathf.Abs(_currentHeightIndex - _previousHeightIndex);
                 playerPos.y += direction * Settings.VerticalSpeed * Time.deltaTime;
@@ -35,14 +37,12 @@ namespace JumpingJack
                 {
                     playerPos.y = desiredHeight;
                     _isMovingVertically = false;
-                    if(_currentHeightIndex == 0)
-                    {
-                        IssueEvent(OnGroundReached);
-                    }
+                    CheckForEndConditions();
                 }
             }
             else
             {
+                // Process input
                 if (Input.GetKeyDown(KeyCode.UpArrow) && CanMoveUp())
                 {
                     _previousHeightIndex = _currentHeightIndex;
@@ -66,11 +66,24 @@ namespace JumpingJack
                 }
             }
 
+            // Wrap player movement
             if(Mathf.Abs(playerPos.x) >= Settings.RightEndPosition)
             {
                 playerPos.x = -1 * (playerPos.x / Mathf.Abs(playerPos.x)) * Settings.RightEndPosition;
             }
             transform.position = playerPos;
+        }
+
+        private void CheckForEndConditions()
+        {
+            if (_currentHeightIndex == 0)
+            {
+                IssueEvent(OnGroundReached);
+            }
+            else if (_currentHeightIndex == Settings.Heights.Positions.Length - 1)
+            {
+                IssueEvent(OnTopReached);
+            }
         }
 
         private bool CanMoveUp()
