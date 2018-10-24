@@ -6,6 +6,9 @@ namespace JumpingJack
     public class PlayerSettings: ScriptableObject
     {
         public PositionsScriptable Heights;
-        public float HorizontalDispozition;
+        public float MoveSpeed;
+        public float VerticalSpeed;
+        [Tooltip("How far up to check for hole.")]
+        public float RayDistance;
     }
 }

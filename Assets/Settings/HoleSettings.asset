@@ -17,4 +17,4 @@ MonoBehaviour:
   LeftEnd: -5.32
   RightEnd: 5.32
   SpawnDistance: 0.91
-  MoveSpeed: 2
+  MoveSpeed: 4

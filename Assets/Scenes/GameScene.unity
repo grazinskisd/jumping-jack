@@ -350,7 +350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eed78b72ef3da94784301e85784b9bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerSettings: {fileID: 11400000, guid: a8a4c522fe5a0a5419040d810145070b, type: 2}
+  Settings: {fileID: 11400000, guid: a8a4c522fe5a0a5419040d810145070b, type: 2}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1108,4 +1108,3 @@ MonoBehaviour:
   HolePrefab: {fileID: 114344375986213422, guid: 6fce8de4147371f4a847f5d0032875e4,
     type: 2}
   Settings: {fileID: 11400000, guid: 04d3d262b0c996740837d444303f55b8, type: 2}
-  _holes: []
