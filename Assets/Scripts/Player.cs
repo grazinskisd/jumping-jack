@@ -2,16 +2,22 @@
 
 namespace JumpingJack
 {
+    public delegate void PlayerEventHanlder(Player sender);
+
     public class Player : MonoBehaviour
     {
         public PlayerSettings Settings;
 
+        public event PlayerEventHanlder OnJump;
+
+        private int _previousHeightIndex;
         private int _currentHeightIndex;
         private bool _isMovingVertically;
 
         private void Start()
         {
             _currentHeightIndex = 0;
+            _previousHeightIndex = 0;
             _isMovingVertically = false;
         }
 
@@ -22,7 +28,7 @@ namespace JumpingJack
             if (_isMovingVertically)
             {
                 var desiredHeight = Settings.Heights.Positions[_currentHeightIndex].y;
-                int direction = (int)((desiredHeight - playerPos.y) / Mathf.Abs(desiredHeight - playerPos.y));
+                int direction = (_currentHeightIndex - _previousHeightIndex) / Mathf.Abs(_currentHeightIndex - _previousHeightIndex);
                 playerPos.y += direction * Settings.VerticalSpeed * Time.deltaTime;
                 if(direction * (playerPos.y - desiredHeight) > 0)
                 {
@@ -34,11 +40,14 @@ namespace JumpingJack
             {
                 if (Input.GetKeyDown(KeyCode.UpArrow) && CanMoveUp())
                 {
+                    _previousHeightIndex = _currentHeightIndex;
                     _currentHeightIndex = Mathf.Min(_currentHeightIndex + 1, Settings.Heights.Positions.Length - 1);
                     _isMovingVertically = true;
+                    IssueEvent(OnJump);
                 }
                 else if (ShouldFallDown())
                 {
+                    _previousHeightIndex = _currentHeightIndex;
                     _currentHeightIndex = Mathf.Max(_currentHeightIndex - 1, 0);
                     _isMovingVertically = true;
                 }
@@ -75,6 +84,14 @@ namespace JumpingJack
                 return true;
             }
             return false;
+        }
+
+        private void IssueEvent(PlayerEventHanlder eventToIssue)
+        {
+            if(eventToIssue != null)
+            {
+                eventToIssue(this);
+            }
         }
     }
 }

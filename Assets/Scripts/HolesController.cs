@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace JumpingJack
@@ -7,17 +6,34 @@ namespace JumpingJack
     public class HolesController: MonoBehaviour
     {
         public Hole HolePrefab;
+        public Player Player;
         public HoleSettings Settings;
 
         private List<Hole> _holes = new List<Hole>();
+        private int _direction = 1;
 
         private void Start()
         {
             for (int i = 0; i < Settings.NumberOfHolesAtStart; i++)
             {
-                Hole newHole = SpawnHole(DirectionFromIndex(i), Settings.StartHoleHeightIndex, 0);
+                Hole newHole = SpawnHole(_direction, Settings.StartHoleHeightIndex, 0);
                 SetupNewHole(newHole);
+                UpdateDirection();
             }
+
+            Player.OnJump += SpawnRandomHole;
+        }
+
+        private void SpawnRandomHole(Player sender)
+        {
+            int holeIndex = Random.Range(0, Settings.Heights.Positions.Length);
+            SetupNewHole(SpawnHole(_direction, holeIndex, GetRandomHolePosition()));
+            UpdateDirection();
+        }
+
+        private float GetRandomHolePosition()
+        {
+            return Random.Range(-1, 1) * (Settings.RightEnd - Settings.SpawnDistance);
         }
 
         private void SetupNewHole(Hole newHole)
@@ -34,14 +50,14 @@ namespace JumpingJack
             _holes.Remove(sender);
         }
 
-        private static int DirectionFromIndex(int i)
+        private void UpdateDirection()
         {
-            return i % 2 == 0 ? 1 : -1;
+            _direction *= -1;
         }
 
         private void SpawnNext(Hole sender)
         {
-            int heightIndex = GetBoundedHeightIndex(sender.CurrentHeightIndex + sender.Direction);
+            int heightIndex = GetBoundedHeightIndex(sender.CurrentHeightIndex - sender.Direction);
             float xPosition = Settings.LeftEnd * sender.Direction;
             var hole = SpawnHole(sender.Direction, heightIndex, xPosition);
             SetupNewHole(hole);
