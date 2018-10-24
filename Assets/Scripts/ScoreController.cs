@@ -42,7 +42,7 @@ namespace JumpingJack
 
         private void UpdateScoreText()
         {
-            ScoreText.text = string.Format(HIGHSCORE_FORMAT, _currentScore);
+            ScoreText.text = string.Format(SCORE_FORMAT, _currentScore);
         }
     }
 }
