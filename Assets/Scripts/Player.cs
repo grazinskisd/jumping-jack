@@ -9,6 +9,7 @@ namespace JumpingJack
         public PlayerSettings Settings;
 
         public event PlayerEventHanlder OnJump;
+        public event PlayerEventHanlder OnGroundReached;
 
         private int _previousHeightIndex;
         private int _currentHeightIndex;
@@ -34,6 +35,10 @@ namespace JumpingJack
                 {
                     playerPos.y = desiredHeight;
                     _isMovingVertically = false;
+                    if(_currentHeightIndex == 0)
+                    {
+                        IssueEvent(OnGroundReached);
+                    }
                 }
             }
             else
