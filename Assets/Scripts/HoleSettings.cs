@@ -5,7 +5,6 @@ namespace JumpingJack
     [CreateAssetMenu(menuName = "JumpingJack/HoleSettings")]
     public class HoleSettings : ScriptableObject
     {
-        public int StartHoleHeightIndex;
         public int NumberOfHolesAtStart;
         public PositionsScriptable Heights;
         public float LeftEnd;

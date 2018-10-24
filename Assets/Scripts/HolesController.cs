@@ -14,9 +14,10 @@ namespace JumpingJack
 
         private void Start()
         {
+            int startHeight = Random.Range(1, Settings.Heights.Positions.Length);
             for (int i = 0; i < Settings.NumberOfHolesAtStart; i++)
             {
-                Hole newHole = SpawnHole(_direction, Settings.StartHoleHeightIndex, 0);
+                Hole newHole = SpawnHole(_direction, startHeight, 0);
                 SetupNewHole(newHole);
                 UpdateDirection();
             }
