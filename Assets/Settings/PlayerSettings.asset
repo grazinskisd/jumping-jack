@@ -15,3 +15,4 @@ MonoBehaviour:
   MoveSpeed: 4
   VerticalSpeed: 4
   RayDistance: 1
+  RightEndPosition: 4.664984

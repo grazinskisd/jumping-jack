@@ -51,6 +51,11 @@ namespace JumpingJack
                     playerPos.x += Settings.MoveSpeed * Time.deltaTime;
                 }
             }
+
+            if(Mathf.Abs(playerPos.x) >= Settings.RightEndPosition)
+            {
+                playerPos.x = -1 * (playerPos.x / Mathf.Abs(playerPos.x)) * Settings.RightEndPosition;
+            }
             transform.position = playerPos;
         }
 

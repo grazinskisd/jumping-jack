@@ -10,5 +10,6 @@ namespace JumpingJack
         public float VerticalSpeed;
         [Tooltip("How far up to check for hole.")]
         public float RayDistance;
+        public float RightEndPosition;
     }
 }
