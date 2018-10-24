@@ -861,6 +861,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeController: {fileID: 1989655807}
+  Player: {fileID: 509130832}
 --- !u!4 &1074889256
 Transform:
   m_ObjectHideFlags: 0

@@ -4,14 +4,13 @@ using UnityEngine.SceneManagement;
 
 namespace JumpingJack
 {
-    public class IntroController: MonoBehaviour
+    public class NextLevelController: MonoBehaviour
     {
         public float WaitTime;
 
         public void Start()
         {
             StartCoroutine(LoadGameScene());
-            PlayerPrefsService.ResetToStart();
         }
 
         private IEnumerator LoadGameScene()
