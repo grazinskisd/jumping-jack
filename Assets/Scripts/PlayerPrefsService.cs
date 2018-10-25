@@ -26,6 +26,14 @@ namespace JumpingJack
             SetInt(Prefs.Score, 0);
             SetInt(Prefs.Lives, 0);
         }
+
+        public static void SetLevelTo(int level)
+        {
+            SetInt(Prefs.Level, level);
+            SetInt(Prefs.Hazards, level-1);
+            SetInt(Prefs.Score, 0);
+            SetInt(Prefs.Lives, 0);
+        }
     }
 
     public enum Prefs

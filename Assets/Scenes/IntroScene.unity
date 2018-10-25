@@ -288,7 +288,7 @@ MonoBehaviour:
     CLONE OF "JUMPING JACK" MADE IN
 
     1983 BY IMAGINE SOFTWARE'
-  LetterDelay: 0.04
+  LetterDelay: 0.03
   TextField: {fileID: 114526254}
 --- !u!1 &196243893
 GameObject:
