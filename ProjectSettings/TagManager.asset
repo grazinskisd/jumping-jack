@@ -47,6 +47,9 @@ TagManager:
   - name: UI
     uniqueID: 3678329089
     locked: 0
+  - name: Hazard
+    uniqueID: 1461222587
+    locked: 0
   - name: Player
     uniqueID: 347483145
     locked: 0

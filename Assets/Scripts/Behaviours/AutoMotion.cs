@@ -2,17 +2,17 @@
 
 namespace JumpingJack
 {
-    public delegate void HoleEventHandler(Hole sender);
+    public delegate void AutoMotionEventHandler(AutoMotion sender);
 
-    public class Hole: MonoBehaviour
+    public class AutoMotion: MonoBehaviour
     {
-        public HoleSettings Settings;
+        public MovingObjectSettings Settings;
         [Tooltip("1: Right; -1: Left")]
         public int Direction;
         public int CurrentHeightIndex;
 
-        public event HoleEventHandler OnSpawnPointReached;
-        public event HoleEventHandler OnDestroyReached;
+        public event AutoMotionEventHandler OnSpawnPointReached;
+        public event AutoMotionEventHandler OnDestroyReached;
 
         private bool _isNextSpawned;
 
@@ -25,20 +25,20 @@ namespace JumpingJack
         {
             transform.Translate(Vector3.right * Direction * Settings.MoveSpeed * Time.deltaTime);
 
-            if(!_isNextSpawned && transform.position.x * Direction >= Settings.RightEnd - Settings.SpawnDistance)
+            if (!_isNextSpawned && transform.position.x * Direction >= Settings.RightEnd - Settings.SpawnDistance)
             {
                 _isNextSpawned = true;
                 IssueEvent(OnSpawnPointReached);
             }
 
-            if(transform.position.x * Direction >= Settings.RightEnd)
+            if (transform.position.x * Direction >= Settings.RightEnd)
             {
                 IssueEvent(OnDestroyReached);
                 Destroy(gameObject);
             }
         }
 
-        private void IssueEvent(HoleEventHandler eventToIssue)
+        private void IssueEvent(AutoMotionEventHandler eventToIssue)
         {
             if(eventToIssue != null)
             {
