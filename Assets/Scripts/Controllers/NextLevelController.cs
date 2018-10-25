@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -10,6 +9,8 @@ namespace JumpingJack
     {
         private const string NEXT_LEVEL_FORMAT = "NEXT LEVEL - {0} HAZARD";
 
+        public BaladSettings Balad;
+        public AppearingUILetters AppearingText;
         public Text NextLevelText;
         public Text PhymeText;
 
@@ -18,6 +19,13 @@ namespace JumpingJack
         public void Start()
         {
             UpdateHazardsText();
+            AppearingText.FullText = Balad.Rhyme[PlayerPrefsService.GetInt(Prefs.Level) - 1];
+            AppearingText.StartDisplaying();
+            AppearingText.OnFinished += LoadGame;
+        }
+
+        private void LoadGame()
+        {
             StartCoroutine(LoadGameScene());
         }
 

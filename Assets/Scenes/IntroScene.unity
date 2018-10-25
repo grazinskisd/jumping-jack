@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72127c49ba2499141a7ad01822422b1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WaitTime: 3
+  WaitTime: 2
   AppearingText: {fileID: 114526256}
 --- !u!4 &1612889954
 Transform:

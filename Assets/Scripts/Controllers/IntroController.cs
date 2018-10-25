@@ -12,6 +12,7 @@ namespace JumpingJack
 
         public void Start()
         {
+            AppearingText.StartDisplaying();
             AppearingText.OnFinished += LoadGame;
             PlayerPrefsService.ResetToStart();
         }

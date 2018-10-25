@@ -19,7 +19,7 @@ namespace JumpingJack
         private int _textLength;
         private int _currentIndex;
 
-        private void Start()
+        public void StartDisplaying()
         {
             _textLength = FullText.Length;
             _currentIndex = 0;
