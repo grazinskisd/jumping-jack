@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace JumpingJack
 {
@@ -8,7 +7,6 @@ namespace JumpingJack
     public class Player : MonoBehaviour
     {
         public PlayerSettings Settings;
-
         public bool GodMode;
 
         public event PlayerEventHanlder OnJump;
@@ -22,8 +20,11 @@ namespace JumpingJack
         private bool _isStunned;
         private float _timeSinceStunned;
 
+        private bool _godMode;
+
         private void Start()
         {
+            _godMode = (PlayerPrefsService.GetInt(Prefs.GodMode) == 1) || GodMode;
             _currentHeightIndex = 0;
             _previousHeightIndex = 0;
             _isMovingVertically = false;
@@ -31,7 +32,7 @@ namespace JumpingJack
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (!GodMode)
+            if (!_godMode)
             {
                 Stun();
             }
@@ -134,7 +135,7 @@ namespace JumpingJack
 
         private bool CanMoveUp()
         {
-            if(HasHole(Vector2.up) || GodMode)
+            if(HasHole(Vector2.up) || _godMode)
             {
                 return true;
             }
@@ -143,7 +144,7 @@ namespace JumpingJack
 
         private bool ShouldFallDown()
         {
-            if (HasHole(Vector2.down) && !GodMode)
+            if (HasHole(Vector2.down) && !_godMode)
             {
                 return true;
             }

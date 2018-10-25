@@ -25,7 +25,8 @@ namespace JumpingJack
         }
 
         /// <summary>
-        /// Pressing letter A will increase the level to be loaded.
+        /// Pressing letter 'A' will increase the level to be loaded.
+        /// Pressing letter 'G' will enable god mode
         /// </summary>
         private void CheckForCheatInput()
         {
@@ -33,6 +34,11 @@ namespace JumpingJack
             {
                 _level = Mathf.Min(_level + 1, 20);
                 Debug.Log("Level: " + _level);
+            }
+
+            if (Input.GetKeyDown(KeyCode.G))
+            {
+                PlayerPrefsService.SetInt(Prefs.GodMode, 1);
             }
         }
 

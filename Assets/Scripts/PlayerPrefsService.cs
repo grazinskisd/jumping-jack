@@ -25,6 +25,7 @@ namespace JumpingJack
             SetInt(Prefs.Hazards, 0);
             SetInt(Prefs.Score, 0);
             SetInt(Prefs.Lives, 0);
+            SetInt(Prefs.GodMode, 0);
         }
 
         public static void SetLevelTo(int level)
@@ -42,6 +43,7 @@ namespace JumpingJack
         Hazards,
         Score,
         Highscore,
-        Lives
+        Lives,
+        GodMode
     }
 }
