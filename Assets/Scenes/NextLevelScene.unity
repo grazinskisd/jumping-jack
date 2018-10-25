@@ -222,7 +222,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.44, y: 0}
+  m_AnchoredPosition: {x: -5.4400024, y: 0}
   m_SizeDelta: {x: 10.88, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &839766875
@@ -442,6 +442,7 @@ GameObject:
   - component: {fileID: 1651602563}
   - component: {fileID: 1651602565}
   - component: {fileID: 1651602564}
+  - component: {fileID: 1651602566}
   m_Layer: 5
   m_Name: RhymeText
   m_TagString: Untagged
@@ -509,6 +510,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1651602562}
   m_CullTransparentMesh: 0
+--- !u!114 &1651602566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1651602562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff5b1acada18314c88a16fa45a53fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FullText: 
+  LetterDelay: 0.6
+  TextField: {fileID: 1651602564}
 --- !u!1 &1825078999
 GameObject:
   m_ObjectHideFlags: 0
