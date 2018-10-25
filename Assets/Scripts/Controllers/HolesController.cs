@@ -9,12 +9,19 @@ namespace JumpingJack
 
         private List<AutoMotion> _holes = new List<AutoMotion>();
         private int _holeCount = 0;
+        private int _startHeight = 0;
 
         protected override void Start()
         {
             _direction = 1;
+            _startHeight = base.GetStartHeight();
             base.Start();
             Player.OnJump += SpawnRandomHole;
+        }
+
+        protected override int GetStartHeight()
+        {
+            return _startHeight;
         }
 
         protected override void UpdateDirection()

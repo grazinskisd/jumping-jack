@@ -15,14 +15,23 @@ namespace JumpingJack
         protected virtual void Start()
         {
             _objects = new List<AutoMotion>();
-            int startHeight = Random.Range(1, Settings.Heights.Positions.Length);
-            for (int i = 0; i < Settings.NumberOfObjectsOnStart; i++)
+            _objectCount = GetNumberOfObjectsOnStart();
+            for (int i = 0; i < _objectCount; i++)
             {
-                AutoMotion newHole = SpawnObject(_direction, startHeight, GetRandomPosition());
-                SetupNewObject(newHole);
+                AutoMotion newObject = SpawnObject(_direction, GetStartHeight(), GetRandomPosition());
+                SetupNewObject(newObject);
                 UpdateDirection();
             }
-            _objectCount = Settings.NumberOfObjectsOnStart;
+        }
+
+        protected virtual int GetStartHeight()
+        {
+            return Random.Range(1, Settings.Heights.Positions.Length);
+        }
+
+        protected virtual int GetNumberOfObjectsOnStart()
+        {
+            return Settings.NumberOfObjectsOnStart;
         }
 
         protected virtual void UpdateDirection()
@@ -37,7 +46,7 @@ namespace JumpingJack
 
         protected float GetRandomPositionOnPlane()
         {
-            return Random.Range(-1, 1) * (Settings.ObjectSettings.RightEnd - Settings.ObjectSettings.SpawnDistance);
+            return Random.Range(-1.0f, 1.0f) * (Settings.ObjectSettings.RightEnd - Settings.ObjectSettings.SpawnDistance);
         }
 
         protected void SetupNewObject(AutoMotion newObject)

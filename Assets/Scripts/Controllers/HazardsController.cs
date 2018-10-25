@@ -12,6 +12,10 @@ namespace JumpingJack
             _direction = HazardMovingDirection;
             base.Start();
         }
+        protected override int GetNumberOfObjectsOnStart()
+        {
+            return PlayerPrefsService.GetInt(Prefs.Hazards);
+        }
 
         protected override Vector2 GetRandomPosition()
         {
