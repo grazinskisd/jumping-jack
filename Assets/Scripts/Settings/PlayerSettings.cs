@@ -11,5 +11,7 @@ namespace JumpingJack
         [Tooltip("How far up to check for hole.")]
         public float RayDistance;
         public float RightEndPosition;
+        public LayerMask HoleLayerMask;
+        public float StunTime;
     }
 }
