@@ -33,8 +33,14 @@ namespace JumpingJack
         {
             if (!GodMode)
             {
-                _isStunned = true;
+                Stun();
             }
+        }
+
+        private void Stun()
+        {
+            _isStunned = true;
+            _timeSinceStunned = 0;
         }
 
         private void Update()
@@ -79,7 +85,7 @@ namespace JumpingJack
                     }
                     else
                     {
-                        _isStunned = true;
+                        Stun();
                     }
                 }
                 else if (ShouldFallDown())
@@ -110,7 +116,7 @@ namespace JumpingJack
         {
             if(_previousHeightIndex - _currentHeightIndex > 0)
             {
-                _isStunned = true;
+                Stun();
             }
         }
 
