@@ -10,7 +10,7 @@ namespace JumpingJack
         public float WaitTime;
         public AppearingUILetters AppearingText;
 
-        private int _level = 0;
+        private int _level = 1;
 
         private void Start()
         {
