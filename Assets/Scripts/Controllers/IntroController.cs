@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,11 +8,17 @@ namespace JumpingJack
     public class IntroController: MonoBehaviour
     {
         public float WaitTime;
+        public AppearingUILetters AppearingText;
 
         public void Start()
         {
-            StartCoroutine(LoadGameScene());
+            AppearingText.OnFinished += LoadGame;
             PlayerPrefsService.ResetToStart();
+        }
+
+        private void LoadGame()
+        {
+            StartCoroutine(LoadGameScene());
         }
 
         private IEnumerator LoadGameScene()
