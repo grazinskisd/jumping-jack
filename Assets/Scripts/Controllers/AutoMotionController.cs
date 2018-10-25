@@ -52,8 +52,13 @@ namespace JumpingJack
         protected void SetupNewObject(AutoMotion newObject)
         {
             _objects.Add(newObject);
-            newObject.OnSpawnPointReached += SpawnNext;
+            newObject.OnSpawnPointReached += OnSpawnPointReached;
             newObject.OnDestroyReached += RemoveHole;
+        }
+
+        protected virtual void OnSpawnPointReached(AutoMotion sender)
+        {
+            SpawnNext(sender);
         }
 
         private void SpawnNext(AutoMotion sender)

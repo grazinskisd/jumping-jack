@@ -1056,6 +1056,8 @@ MonoBehaviour:
   Settings: {fileID: 11400000, guid: 39d7970b0b2d63c4282c3f1208c6b200, type: 2}
   HazardMovingDirection: -1
   HazardPositionOffset: {x: 0, y: 0.4}
+  MinDelayForSpawn: 1
+  MaxDelayForSpawn: 2
 --- !u!4 &1327761035
 Transform:
   m_ObjectHideFlags: 0
