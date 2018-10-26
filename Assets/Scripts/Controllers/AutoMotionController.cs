@@ -93,15 +93,15 @@ namespace JumpingJack
             return heightIndex;
         }
 
-        protected AutoMotion SpawnObject(int direction, int heightIndex, Vector2 position)
+        protected virtual AutoMotion SpawnObject(int direction, int heightIndex, Vector2 position)
         {
-            var hole = Instantiate(ObjectPrefab);
-            hole.Direction = direction;
-            hole.Settings = Settings.ObjectSettings;
-            hole.CurrentHeightIndex = heightIndex;
-            hole.transform.SetParent(transform);
-            hole.transform.position = position + Vector2.up * Settings.Heights.Positions[heightIndex].y;
-            return hole;
+            var obj = Instantiate(ObjectPrefab);
+            obj.Direction = direction;
+            obj.Settings = Settings.ObjectSettings;
+            obj.CurrentHeightIndex = heightIndex;
+            obj.transform.SetParent(transform);
+            obj.transform.position = position + Vector2.up * Settings.Heights.Positions[heightIndex].y;
+            return obj;
         }
     }
 }

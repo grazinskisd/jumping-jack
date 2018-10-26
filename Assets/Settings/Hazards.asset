@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25d0cd5064761c4ab4ba672eb22a7d0, type: 3}
+  m_Name: Hazards
+  m_EditorClassIdentifier: 
+  Hazards:
+  - {fileID: 114095951892805800, guid: 0f8aecea4ad277644b08b357a8cd0f83, type: 2}
+  - {fileID: 114778922276381140, guid: 225ed584986a330438b5934528a11727, type: 2}
+  - {fileID: 114877749957876758, guid: fb9558d151c88c7448ca9cfa607a9f50, type: 2}
+  - {fileID: 114249215404790044, guid: 8c6ebf4dea3892540aefa8ac4c1776c6, type: 2}
+  - {fileID: 114773807136343342, guid: f577ffcab3fcbd947ba45aa205965ff8, type: 2}
+  - {fileID: 114965545567233144, guid: 025f9724bb5e6b34fb0b202c4ed01691, type: 2}
+  - {fileID: 114186564597382770, guid: 621072bbe3f3f2e49b869f093d206fae, type: 2}
+  - {fileID: 114739404844099856, guid: 4a7c60f16fe084d418aa6cca4041d12f, type: 2}
+  - {fileID: 114452671497817308, guid: 6c502e7d2bacf864580bf7065ffaf203, type: 2}
+  - {fileID: 114458638167067580, guid: 8b252081936b524429c1d10acf09392a, type: 2}
+  Colors:
+  - {r: 0.8396226, g: 0.20198467, b: 0.20198467, a: 1}
+  - {r: 0.24402991, g: 0.8018868, b: 0.15508187, a: 1}
+  - {r: 0, g: 0, b: 0, a: 1}
+  - {r: 0.8490566, g: 0.840883, b: 0.1481844, a: 1}
+  - {r: 0.1782218, g: 0.32689217, b: 0.8396226, a: 1}
+  - {r: 0.8584906, g: 0.1822268, b: 0.7506271, a: 0}
