@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   Heights: {fileID: 11400000, guid: 3ec18452f034cb8449bad6c697c59506, type: 2}
-  VerticalMoveDuration: 0.5
+  VerticalMoveDuration: 0.2
   MoveSpeed: 4
-  HorizontalMoveDuration: 0.1
-  MinHorizontalDisposition: 0.4
   RayDistance: 1
   RightEndPosition: 4.67
   RightSpawnPosition: 4.998
