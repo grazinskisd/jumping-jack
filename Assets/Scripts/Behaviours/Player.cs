@@ -24,11 +24,13 @@ namespace JumpingJack
         private bool _godMode;
 
         private PlayerPrefsService _prefService;
+        private Camera _camera;
         private bool _isPlayerWrapping;
 
         private void Awake()
         {
             _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
+            _camera = Camera.main;
         }
 
         private void Start()
@@ -51,6 +53,7 @@ namespace JumpingJack
         {
             _isStunned = true;
             _timeSinceStunned = 0;
+            CameraShake();
         }
 
         private void Update()
@@ -64,6 +67,16 @@ namespace JumpingJack
             {
                 ProcessUserInput();
             }
+
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                CameraShake();
+            }
+        }
+
+        private void CameraShake()
+        {
+            _camera.DOShakePosition(0.2f, 1, 100).OnComplete(() => _camera.transform.position = Vector3.back * 10);
         }
 
         private void LateUpdate()
