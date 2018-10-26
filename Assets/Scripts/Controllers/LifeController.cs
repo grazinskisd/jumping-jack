@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace JumpingJack
@@ -11,7 +10,6 @@ namespace JumpingJack
         public GameObject LifePrefab;
         public Player Player;
 
-        public int StartLifeCount;
         public Vector2 StartPosition;
         public Vector2 LifePositionOffset;
 
@@ -20,13 +18,24 @@ namespace JumpingJack
         private int _remainingLives;
         private List<GameObject> _lives;
 
+        private PlayerPrefsService _prefService;
+
+        private void Awake()
+        {
+            _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
+        }
+
         private void Start()
         {
-            _lives = new List<GameObject>(StartLifeCount);
-            _remainingLives = StartLifeCount;
+            _remainingLives = _prefService.GetInt(Prefs.Lives);
+            if (_prefService.ShouldAwardExtraLife())
+            {
+                _remainingLives++;
+            }
+            _lives = new List<GameObject>(_remainingLives);
             Player.OnGroundReached += DecrementLife;
 
-            for (int i = 0; i < StartLifeCount; i++)
+            for (int i = 0; i < _remainingLives; i++)
             {
                 SpawnLife(StartPosition + i * LifePositionOffset);
             }

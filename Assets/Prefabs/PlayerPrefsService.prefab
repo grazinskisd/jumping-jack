@@ -52,3 +52,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxLevel: 20
+  ExtraLivesLevels: 060000000b00000010000000
+  StartLifeCount: 6

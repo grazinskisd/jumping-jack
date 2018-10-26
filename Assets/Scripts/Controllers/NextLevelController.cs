@@ -13,9 +13,14 @@ namespace JumpingJack
 
         public BaladSettings Balad;
         public AppearingUILetters AppearingText;
+
         public Text NextLevelText;
         public GameObject NextLevelGO;
+
         public Text PhymeText;
+
+        public GameObject ExtraLifeGO;
+        public AppearingUILetters ExtraLifeText;
 
         public float WaitTime;
 
@@ -28,10 +33,25 @@ namespace JumpingJack
 
         public void Start()
         {
+            ExtraLifeGO.SetActive(false);
             ProcessHazardsDisplay();
             AppearingText.FullText = Balad.Rhyme[_prefService.GetInt(Prefs.Level)-1];
             AppearingText.StartDisplaying();
-            AppearingText.OnFinished += LoadGame;
+            if (_prefService.ShouldAwardExtraLife())
+            {
+                AppearingText.OnFinished += ShowExtraLife;
+            }
+            else
+            {
+                AppearingText.OnFinished += LoadGame;
+            }
+        }
+
+        private void ShowExtraLife()
+        {
+            ExtraLifeGO.SetActive(true);
+            ExtraLifeText.StartDisplaying();
+            ExtraLifeText.OnFinished += LoadGame;
         }
 
         private void ProcessHazardsDisplay()

@@ -5,6 +5,8 @@ namespace JumpingJack
     public class PlayerPrefsService: MonoBehaviour
     {
         public int MaxLevel;
+        public int[] ExtraLivesLevels;
+        public int StartLifeCount;
 
         private static bool _isCreated = false;
 
@@ -19,6 +21,19 @@ namespace JumpingJack
             {
                 Destroy(gameObject);
             }
+        }
+
+        public bool ShouldAwardExtraLife()
+        {
+            int level = GetInt(Prefs.Level);
+            for (int i = 0; i < ExtraLivesLevels.Length; i++)
+            {
+                if(level == ExtraLivesLevels[i])
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public bool IsLastLevel()
@@ -51,7 +66,7 @@ namespace JumpingJack
             SetInt(Prefs.Level, 0);
             SetInt(Prefs.Hazards, 0);
             SetInt(Prefs.Score, 0);
-            SetInt(Prefs.Lives, 0);
+            SetInt(Prefs.Lives, StartLifeCount);
             SetInt(Prefs.GodMode, 0);
         }
 
@@ -60,7 +75,7 @@ namespace JumpingJack
             SetInt(Prefs.Level, level);
             SetInt(Prefs.Hazards, level);
             SetInt(Prefs.Score, 0);
-            SetInt(Prefs.Lives, 0);
+            SetInt(Prefs.Lives, StartLifeCount);
         }
     }
 

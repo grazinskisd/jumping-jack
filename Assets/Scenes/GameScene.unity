@@ -1373,7 +1373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifePrefab: {fileID: 1815651987366244, guid: adbdbc01c191f86458da64ac96c8776a, type: 2}
   Player: {fileID: 509130832}
-  StartLifeCount: 6
   StartPosition: {x: -4.74, y: -3.26}
   LifePositionOffset: {x: 0.3, y: 0}
 --- !u!4 &1989655808
