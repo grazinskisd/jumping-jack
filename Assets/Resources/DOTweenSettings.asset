@@ -32,10 +32,10 @@ MonoBehaviour:
   modules:
     showPanel: 0
     audioEnabled: 1
-    physicsEnabled: 1
+    physicsEnabled: 0
     physics2DEnabled: 1
     spriteEnabled: 1
-    uiEnabled: 1
+    uiEnabled: 0
     textMeshProEnabled: 0
     tk2DEnabled: 0
   showPlayingTweens: 0

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 namespace JumpingJack
 {
@@ -23,6 +24,7 @@ namespace JumpingJack
         private bool _godMode;
 
         private PlayerPrefsService _prefService;
+        private bool _isPlayerWrapping;
 
         private void Awake()
         {
@@ -53,71 +55,141 @@ namespace JumpingJack
 
         private void Update()
         {
-            var playerPos = transform.position;
-
             if (_isStunned)
             {
-                _timeSinceStunned += Time.deltaTime;
-                if (_timeSinceStunned >= Settings.StunTime)
-                {
-                    _timeSinceStunned = 0;
-                    _isStunned = false;
-                }
+                UpdateStunTime();
             }
 
-            if (_isMovingVertically)
+            if (!_isMovingVertically)
             {
-                // Gradually move player up or down
-                var desiredHeight = Settings.Heights.Positions[_currentHeightIndex].y;
-                int direction = (_currentHeightIndex - _previousHeightIndex) / Mathf.Abs(_currentHeightIndex - _previousHeightIndex);
-                playerPos.y += direction * Settings.VerticalSpeed * Time.deltaTime;
-                if(direction * (playerPos.y - desiredHeight) > 0)
-                {
-                    playerPos.y = desiredHeight;
-                    _isMovingVertically = false;
-                    CheckForEndConditions();
-                    CheckIfShouldStun();
-                }
+                ProcessUserInput();
             }
-            else
-            {
-                // Process input
-                if (Input.GetKeyDown(KeyCode.UpArrow) && !_isStunned)
-                {
-                    if (CanMoveUp())
-                    {
-                        _previousHeightIndex = _currentHeightIndex;
-                        _currentHeightIndex = Mathf.Min(_currentHeightIndex + 1, Settings.Heights.Positions.Length - 1);
-                        _isMovingVertically = true;
-                        IssueEvent(OnJump);
-                    }
-                    else
-                    {
-                        Stun();
-                    }
-                }
-                else if (ShouldFallDown())
-                {
-                    _previousHeightIndex = _currentHeightIndex;
-                    _currentHeightIndex = Mathf.Max(_currentHeightIndex - 1, 0);
-                    _isMovingVertically = true;
-                }
-                else if (Input.GetKey(KeyCode.LeftArrow) && !_isStunned)
-                {
-                    playerPos.x -= Settings.MoveSpeed * Time.deltaTime;
-                }
-                else if (Input.GetKey(KeyCode.RightArrow) && !_isStunned)
-                {
-                    playerPos.x += Settings.MoveSpeed * Time.deltaTime;
-                }
-            }
+        }
 
-            // Wrap player movement
-            if(Mathf.Abs(playerPos.x) >= Settings.RightEndPosition)
+        private void LateUpdate()
+        {
+            WrapPlayerMovement();
+        }
+
+        private void WrapPlayerMovement()
+        {
+            if (!_isPlayerWrapping && ShouldWrapPlayerPosition())
             {
-                playerPos.x = -1 * (playerPos.x / Mathf.Abs(playerPos.x)) * Settings.RightEndPosition;
+                SlidePlayerOut();
             }
+        }
+
+        private bool ShouldWrapPlayerPosition()
+        {
+            return Mathf.Abs(transform.position.x) > Settings.RightEndPosition;
+        }
+
+        private void SlidePlayerOut()
+        {
+            Vector3 playerPos = transform.position;
+            float sign = playerPos.x / Mathf.Abs(playerPos.x);
+            float dist = Settings.RightSpawnPosition - Settings.RightEndPosition;
+            float dur = dist / Settings.MoveSpeed;
+            _isPlayerWrapping = true;
+
+            transform.DOMoveX(sign * Settings.RightSpawnPosition, dur)
+                .OnComplete(() => SlinePlayerIn(playerPos, sign, dur));
+        }
+
+        private void SlinePlayerIn(Vector3 playerPos, float sign, float dur)
+        {
+            playerPos.x = -sign * Settings.RightSpawnPosition;
             transform.position = playerPos;
+            transform.DOMoveX(-sign * Settings.RightEndPosition, dur)
+                .OnComplete(ResetIsPlayerWrapping);
+        }
+
+        private void ResetIsPlayerWrapping()
+        {
+            _isPlayerWrapping = false;
+        }
+
+        private void ProcessUserInput()
+        {
+            ProcessVerticalInput();
+            ProcessHorizontalInput();
+        }
+
+        private void ProcessVerticalInput()
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow) && !_isStunned)
+            {
+                if (CanMoveUp())
+                {
+                    IncrementHeightIndex();
+                    MovePlayerVertically();
+                    IssueEvent(OnJump);
+                }
+                else
+                {
+                    Stun();
+                }
+            }
+            else if (ShouldFallDown())
+            {
+                DecrementHeightIndex();
+                MovePlayerVertically();
+            }
+        }
+
+        private void ProcessHorizontalInput()
+        {
+            if (Input.GetKey(KeyCode.LeftArrow) && !_isStunned)
+            {
+                MovePlayerHorizontaly(-1);
+            }
+            else if (Input.GetKey(KeyCode.RightArrow) && !_isStunned)
+            {
+                MovePlayerHorizontaly(1);
+            }
+        }
+
+        private void MovePlayerHorizontaly(int direction)
+        {
+            var playerPos = transform.position;
+            playerPos.x += direction * Settings.MoveSpeed * Time.deltaTime;
+            transform.position = playerPos;
+        }
+
+        private void UpdateStunTime()
+        {
+            _timeSinceStunned += Time.deltaTime;
+            if (_timeSinceStunned >= Settings.StunTime)
+            {
+                _timeSinceStunned = 0;
+                _isStunned = false;
+            }
+        }
+
+        private void DecrementHeightIndex()
+        {
+            _previousHeightIndex = _currentHeightIndex;
+            _currentHeightIndex = Mathf.Max(_currentHeightIndex - 1, 0);
+        }
+
+        private void IncrementHeightIndex()
+        {
+            _previousHeightIndex = _currentHeightIndex;
+            _currentHeightIndex = Mathf.Min(_currentHeightIndex + 1, Settings.Heights.Positions.Length - 1);
+        }
+
+        private void MovePlayerVertically()
+        {
+            var desiredHeight = Settings.Heights.Positions[_currentHeightIndex].y;
+            transform.DOLocalMoveY(desiredHeight, Settings.VerticalMoveDuration).SetEase(Ease.Linear).OnComplete(ProcessHeightReached);
+            _isMovingVertically = true;
+        }
+
+        private void ProcessHeightReached()
+        {
+            _isMovingVertically = false;
+            CheckForEndConditions();
+            CheckIfShouldStun();
         }
 
         private void CheckIfShouldStun()
