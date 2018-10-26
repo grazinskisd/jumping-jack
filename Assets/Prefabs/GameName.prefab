@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 224927757204899626}
   - component: {fileID: 222475195295867522}
   - component: {fileID: 114185677594905228}
+  - component: {fileID: 114206984151587248}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -98,13 +99,28 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 72
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: JUMPING JACK
+--- !u!114 &114206984151587248
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736425792946462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eff5b1acada18314c88a16fa45a53fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FullText: JUMPING JACK
+  LetterDelay: 0.2
+  TextField: {fileID: 114185677594905228}
+  StartOnAwake: 0
 --- !u!222 &222475195295867522
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -134,8 +150,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5.475006, y: 0}
-  m_SizeDelta: {x: 10.95, y: 0}
+  m_AnchoredPosition: {x: 13.989997, y: 0}
+  m_SizeDelta: {x: -27.980005, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224977960770439482
 RectTransform:

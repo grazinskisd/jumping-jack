@@ -11,6 +11,7 @@ namespace JumpingJack
         public string FullText;
         public float LetterDelay;
         public Text TextField;
+        public bool StartOnAwake;
 
         public event AppearingLettersEventHandler OnFinished;
 
@@ -18,6 +19,14 @@ namespace JumpingJack
         private string _currentText;
         private int _textLength;
         private int _currentIndex;
+
+        private void Awake()
+        {
+            if (StartOnAwake)
+            {
+                StartDisplaying();
+            }
+        }
 
         public void StartDisplaying()
         {

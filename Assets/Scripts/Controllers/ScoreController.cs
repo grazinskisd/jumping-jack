@@ -14,11 +14,17 @@ namespace JumpingJack
 
         private int _currentScore;
         private int _currentHighscore;
+        private PlayerPrefsService _prefService;
+
+        private void Awake()
+        {
+            _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
+        }
 
         private void Start()
         {
-            _currentHighscore = PlayerPrefsService.GetInt(Prefs.Highscore);
-            _currentScore = PlayerPrefsService.GetInt(Prefs.Score);
+            _currentHighscore = _prefService.GetInt(Prefs.Highscore);
+            _currentScore = _prefService.GetInt(Prefs.Score);
             HighscoreText.text = string.Format(HIGHSCORE_FORMAT, _currentHighscore);
             UpdateScoreText();
             Player.OnJump += IncrementScore;
@@ -26,8 +32,8 @@ namespace JumpingJack
 
         private void IncrementScore(Player sender)
         {
-            _currentScore += ScoreIncrement * PlayerPrefsService.GetInt(Prefs.Level);
-            PlayerPrefsService.SetInt(Prefs.Score, _currentScore);
+            _currentScore += ScoreIncrement * (_prefService.GetInt(Prefs.Level) + 1);
+            _prefService.SetInt(Prefs.Score, _currentScore);
             UpdateScoreText();
         }
 

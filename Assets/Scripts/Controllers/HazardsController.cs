@@ -11,6 +11,13 @@ namespace JumpingJack
         public float MinDelayForSpawn;
         public float MaxDelayForSpawn;
 
+        private PlayerPrefsService _prefService;
+
+        private void Awake()
+        {
+            _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
+        }
+
         protected override void Start()
         {
             _direction = HazardMovingDirection;
@@ -37,7 +44,7 @@ namespace JumpingJack
 
         protected override int GetNumberOfObjectsOnStart()
         {
-            return PlayerPrefsService.GetInt(Prefs.Hazards);
+            return _prefService.GetInt(Prefs.Hazards);
         }
 
         protected override Vector2 GetRandomPosition()

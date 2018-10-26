@@ -22,9 +22,16 @@ namespace JumpingJack
 
         private bool _godMode;
 
+        private PlayerPrefsService _prefService;
+
+        private void Awake()
+        {
+            _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
+        }
+
         private void Start()
         {
-            _godMode = (PlayerPrefsService.GetInt(Prefs.GodMode) == 1) || GodMode;
+            _godMode = (_prefService.GetInt(Prefs.GodMode) == 1) || GodMode;
             _currentHeightIndex = 0;
             _previousHeightIndex = 0;
             _isMovingVertically = false;

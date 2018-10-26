@@ -524,6 +524,7 @@ MonoBehaviour:
   FullText: 
   LetterDelay: 0.05
   TextField: {fileID: 1651602564}
+  StartOnAwake: 0
 --- !u!1 &1825078999
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +555,7 @@ MonoBehaviour:
   Balad: {fileID: 11400000, guid: f6c897131bc888a4c8a380ffaac2f0a7, type: 2}
   AppearingText: {fileID: 1651602566}
   NextLevelText: {fileID: 839766875}
+  NextLevelGO: {fileID: 2012160643}
   PhymeText: {fileID: 1651602564}
   WaitTime: 2
 --- !u!4 &1825079001

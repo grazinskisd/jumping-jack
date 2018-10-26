@@ -10,13 +10,19 @@ namespace JumpingJack
         public float WaitTime;
         public AppearingUILetters AppearingText;
 
-        private int _level = 1;
+        private int _level = 0;
+        private PlayerPrefsService _prefService;
+
+        private void Awake()
+        {
+            _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
+        }
 
         private void Start()
         {
             AppearingText.StartDisplaying();
             AppearingText.OnFinished += LoadGame;
-            PlayerPrefsService.ResetToStart();
+            _prefService.ResetToStart();
         }
 
         private void Update()
@@ -33,12 +39,14 @@ namespace JumpingJack
             if (Input.GetKeyDown(KeyCode.A))
             {
                 _level = Mathf.Min(_level + 1, 20);
+#if UNITY_EDITOR
                 Debug.Log("Level: " + _level);
+#endif
             }
 
             if (Input.GetKeyDown(KeyCode.G))
             {
-                PlayerPrefsService.SetInt(Prefs.GodMode, 1);
+                _prefService.SetInt(Prefs.GodMode, 1);
             }
         }
 
@@ -50,7 +58,7 @@ namespace JumpingJack
         private IEnumerator LoadGameScene()
         {
             yield return new WaitForSeconds(WaitTime);
-            PlayerPrefsService.SetLevelTo(_level);
+            _prefService.SetLevelTo(_level);
             SceneManager.LoadScene(Scenes.GameScene.ToString());
         }
     }
