@@ -25,6 +25,11 @@ namespace JumpingJack
             base.Start();
         }
 
+        protected override int GetStartHeight()
+        {
+            return Random.Range(1, Settings.Heights.Positions.Length-1);
+        }
+
         protected override AutoMotion SpawnObject(int direction, int heightIndex, Vector2 position)
         {
             var obj = SpawnObject(GetRandomHazard(), direction, heightIndex, position);
@@ -45,7 +50,7 @@ namespace JumpingJack
 
         protected override void OnSpawnPointReached(AutoMotion sender)
         {
-            if (sender.CurrentHeightIndex == Settings.Heights.Positions.Length - 1)
+            if (sender.CurrentHeightIndex == Settings.Heights.Positions.Length - 2)
             {
                 StartCoroutine(SpawnObjectDelayed(sender, Random.Range(MinDelayForSpawn, MaxDelayForSpawn)));
             }
@@ -53,6 +58,11 @@ namespace JumpingJack
             {
                 base.OnSpawnPointReached(sender);
             }
+        }
+
+        protected override int GetBoundedHeightIndex(int heightIndex)
+        {
+            return base.GetBoundedHeightIndex(heightIndex) % (Settings.Heights.Positions.Length-1);
         }
 
         private IEnumerator SpawnObjectDelayed(AutoMotion sender, float delayForSpawn)

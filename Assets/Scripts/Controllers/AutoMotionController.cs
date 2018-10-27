@@ -75,7 +75,7 @@ namespace JumpingJack
             _objects.Remove(sender);
         }
 
-        protected int GetBoundedHeightIndex(int heightIndex)
+        protected virtual int GetBoundedHeightIndex(int heightIndex)
         {
             if (heightIndex < 0)
             {
