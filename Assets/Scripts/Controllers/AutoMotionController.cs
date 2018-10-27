@@ -52,20 +52,15 @@ namespace JumpingJack
         protected void SetupNewObject(AutoMotion newObject)
         {
             _objects.Add(newObject);
+            newObject.OnDestroyReached += RemoveObject;
             newObject.OnSpawnPointReached += OnSpawnPointReached;
-            newObject.OnDestroyReached += RemoveHole;
         }
 
         protected virtual void OnSpawnPointReached(AutoMotion sender)
         {
-            SpawnNext(sender);
-        }
-
-        private void SpawnNext(AutoMotion sender)
-        {
             int heightIndex = GetBoundedHeightIndex(sender.CurrentHeightIndex - sender.Direction);
-            var hole = SpawnObject(sender.Direction, heightIndex, GetNextSpawnPosition(sender));
-            SetupNewObject(hole);
+            var obj = SpawnObject(sender, sender.Direction, heightIndex, GetNextSpawnPosition(sender));
+            SetupNewObject(obj);
         }
 
         protected virtual Vector2 GetNextSpawnPosition(AutoMotion sender)
@@ -73,14 +68,14 @@ namespace JumpingJack
             return Vector2.right * Settings.ObjectSettings.RightEnd * -1 * sender.Direction;
         }
 
-        private void RemoveHole(AutoMotion sender)
+        private void RemoveObject(AutoMotion sender)
         {
-            sender.OnDestroyReached -= RemoveHole;
-            sender.OnSpawnPointReached -= SpawnNext;
+            sender.OnDestroyReached -= RemoveObject;
+            sender.OnSpawnPointReached -= OnSpawnPointReached;
             _objects.Remove(sender);
         }
 
-        private int GetBoundedHeightIndex(int heightIndex)
+        protected int GetBoundedHeightIndex(int heightIndex)
         {
             if (heightIndex < 0)
             {
@@ -95,7 +90,13 @@ namespace JumpingJack
 
         protected virtual AutoMotion SpawnObject(int direction, int heightIndex, Vector2 position)
         {
-            var obj = Instantiate(ObjectPrefab);
+            return SpawnObject(ObjectPrefab, direction, heightIndex, position);
+        }
+
+        protected virtual AutoMotion SpawnObject(AutoMotion prototype, int direction, int heightIndex, Vector2 position)
+        {
+            var obj = Instantiate(prototype);
+            obj.gameObject.name = prototype.gameObject.name;
             obj.Direction = direction;
             obj.Settings = Settings.ObjectSettings;
             obj.CurrentHeightIndex = heightIndex;

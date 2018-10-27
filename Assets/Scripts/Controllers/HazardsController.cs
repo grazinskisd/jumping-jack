@@ -27,14 +27,9 @@ namespace JumpingJack
 
         protected override AutoMotion SpawnObject(int direction, int heightIndex, Vector2 position)
         {
-            var hazard = InstantiateRandomHazard();
-            SetRandomColor(hazard);
-            hazard.Direction = direction;
-            hazard.Settings = Settings.ObjectSettings;
-            hazard.CurrentHeightIndex = heightIndex;
-            hazard.transform.SetParent(transform);
-            hazard.transform.position = position + Vector2.up * Settings.Heights.Positions[heightIndex].y;
-            return hazard;
+            var obj = SpawnObject(GetRandomHazard(), direction, heightIndex, position);
+            SetRandomColor(obj);
+            return obj;
         }
 
         private void SetRandomColor(AutoMotion hazard)
@@ -43,9 +38,9 @@ namespace JumpingJack
             renderer.color = HazardSettings.Colors[Random.Range(0, HazardSettings.Colors.Length)];
         }
 
-        private AutoMotion InstantiateRandomHazard()
+        private AutoMotion GetRandomHazard()
         {
-            return Instantiate(HazardSettings.Hazards[Random.Range(0, HazardSettings.Hazards.Length)]);
+            return HazardSettings.Hazards[Random.Range(0, HazardSettings.Hazards.Length)];
         }
 
         protected override void OnSpawnPointReached(AutoMotion sender)
@@ -62,8 +57,12 @@ namespace JumpingJack
 
         private IEnumerator SpawnObjectDelayed(AutoMotion sender, float delayForSpawn)
         {
+            int heightIndex = GetBoundedHeightIndex(sender.CurrentHeightIndex - sender.Direction);
+            var obj = SpawnObject(sender, sender.Direction, heightIndex, GetNextSpawnPosition(sender));
+            SetupNewObject(obj);
+            obj.gameObject.SetActive(false);
             yield return new WaitForSeconds(delayForSpawn);
-            base.OnSpawnPointReached(sender);
+            obj.gameObject.SetActive(true);
         }
 
         protected override int GetNumberOfObjectsOnStart()
