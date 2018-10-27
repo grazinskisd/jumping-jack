@@ -1,33 +1,33 @@
 fileFormatVersion: 2
-guid: b1cd71ef9189d5d46b0bcceaa9833bfc
+guid: 515523d24d7cf4d409bee6c0a6c35d2f
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Hazards2_0
-    21300002: Hazards2_1
-    21300004: Hazards2_2
-    21300006: Hazards2_3
-    21300008: Hazards2_4
-    21300010: Hazards2_5
-    21300012: Hazards2_6
-    21300014: Hazards2_7
-    21300016: Hazards2_8
-    21300018: Hazards2_9
-    21300020: Hazards2_10
-    21300022: Hazards2_11
-    21300024: Hazards2_12
-    21300026: Hazards2_13
-    21300028: Hazards2_14
-    21300030: Hazards2_15
-    21300032: Hazards2_16
-    21300034: Hazards2_17
-    21300036: Hazards2_18
-    21300038: Hazards2_19
-    21300040: Hazards2_20
-    21300042: Hazards2_21
-    21300044: Hazards2_22
-    21300046: Hazards2_23
-    21300048: Hazards2_24
-    21300050: Hazards2_25
+    21300000: Hazards_0
+    21300002: Hazards_1
+    21300004: Hazards_2
+    21300006: Hazards_3
+    21300008: Hazards_4
+    21300010: Hazards_5
+    21300012: Hazards_6
+    21300014: Hazards_7
+    21300016: Hazards_8
+    21300018: Hazards_9
+    21300020: Hazards_10
+    21300022: Hazards_11
+    21300024: Hazards_12
+    21300026: Hazards_13
+    21300028: Hazards_14
+    21300030: Hazards_15
+    21300032: Hazards_16
+    21300034: Hazards_17
+    21300036: Hazards_18
+    21300038: Hazards_19
+    21300040: Hazards_20
+    21300042: Hazards_21
+    21300044: Hazards_22
+    21300046: Hazards_23
+    21300048: Hazards_24
+    21300050: Hazards_25
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -57,7 +57,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -73,7 +73,7 @@ TextureImporter:
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 40
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 1
+  spriteGenerateFallbackPhysicsShape: 0
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -132,11 +132,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hazards2_0
+      name: Hazards_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 147
+        y: 146
         width: 15
         height: 12
       alignment: 0
@@ -146,17 +146,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1398f3a65a4a07418302701f78cd23a
+      spriteID: df65b0b5afbf0674c8562df7458b6aca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_1
+      name: Hazards_1
       rect:
         serializedVersion: 2
         x: 19
-        y: 145
+        y: 144
         width: 15
         height: 14
       alignment: 0
@@ -166,17 +166,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97a4444ef33f812408bd17e0bd3d694c
+      spriteID: 01ce20ce4dcca45408537ffd32f11485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_2
+      name: Hazards_2
       rect:
         serializedVersion: 2
         x: 35
-        y: 143
+        y: 142
         width: 15
         height: 16
       alignment: 0
@@ -186,17 +186,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5e3bbfab5461584ea9b7a64874f6fc0
+      spriteID: 0e2282460502ef24980621c496bce64a
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_3
+      name: Hazards_3
       rect:
         serializedVersion: 2
         x: 0
-        y: 135
+        y: 134
         width: 19
         height: 11
       alignment: 0
@@ -206,17 +206,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e95d884f68de6e242919b13d6a8ecde9
+      spriteID: 767d6f180f27f0d45a4035cc9acccf84
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_4
+      name: Hazards_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 117
+        y: 116
         width: 19
         height: 16
       alignment: 0
@@ -226,17 +226,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58482be47d0a87b4aa663b06feacbd90
+      spriteID: 15a4ee99f88b72a4c851099a4bfb9c38
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_5
+      name: Hazards_5
       rect:
         serializedVersion: 2
         x: 20
-        y: 117
+        y: 116
         width: 12
         height: 16
       alignment: 0
@@ -246,17 +246,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f60e9fcf4eb4e324eb4ded59667b9617
+      spriteID: d642e0188de7b9b45ab31af33de217e6
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_6
+      name: Hazards_6
       rect:
         serializedVersion: 2
         x: 33
-        y: 117
+        y: 116
         width: 12
         height: 16
       alignment: 0
@@ -266,17 +266,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 362a30008a9cbb744910dfa1b37c745c
+      spriteID: bf5f6d2e2c6f1c04caa47c62e76baa89
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_7
+      name: Hazards_7
       rect:
         serializedVersion: 2
         x: 0
-        y: 100
+        y: 99
         width: 16
         height: 16
       alignment: 0
@@ -286,17 +286,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ae868f4c857736041aa9b6c1f14b1b03
+      spriteID: 587e3af48a0b4d943bf3504267791d63
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_8
+      name: Hazards_8
       rect:
         serializedVersion: 2
         x: 17
-        y: 100
+        y: 99
         width: 13
         height: 16
       alignment: 0
@@ -306,17 +306,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 741ca51d36f8d5a459d604416aeac7e9
+      spriteID: 3fc788da29662cc439bd33a2559b6aef
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_9
+      name: Hazards_9
       rect:
         serializedVersion: 2
         x: 32
-        y: 100
+        y: 99
         width: 12
         height: 16
       alignment: 0
@@ -326,17 +326,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6815b80490d4dae44a4e307dc74e616e
+      spriteID: c99179e72d1a58b41b5578f78921bd60
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_10
+      name: Hazards_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 83
+        y: 82
         width: 18
         height: 16
       alignment: 0
@@ -346,17 +346,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4a808d04f37286d4ea7d9a55320ff131
+      spriteID: 98cfb9bb91aa57744b3a4cc3c9b0576f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_11
+      name: Hazards_11
       rect:
         serializedVersion: 2
         x: 19
-        y: 83
+        y: 82
         width: 19
         height: 16
       alignment: 0
@@ -366,17 +366,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 998117b082c9b3f42a0b697047f39e0a
+      spriteID: 06abb8a9578a6ff44af72bc2d349a4b1
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_12
+      name: Hazards_12
       rect:
         serializedVersion: 2
         x: 39
-        y: 83
+        y: 82
         width: 20
         height: 16
       alignment: 0
@@ -386,36 +386,16 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c66e76948b843524891cefaf1a893143
+      spriteID: 80b77d1df61509247b1b1be1f083b779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_13
+      name: Hazards_13
       rect:
         serializedVersion: 2
         x: 0
-        y: 66
-        width: 19
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c0a6afe72fe203a40baa638dd68d4ebe
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Hazards2_14
-      rect:
-        serializedVersion: 2
-        x: 20
         y: 65
         width: 19
         height: 16
@@ -426,17 +406,37 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 043b245d98f8f5f43967b9004f8a06a9
+      spriteID: 69754e8131c1d544d938d50058170e21
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_15
+      name: Hazards_14
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 64
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8d78d7b41ab014db0cf93b1130efb3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Hazards_15
       rect:
         serializedVersion: 2
         x: 0
-        y: 51
+        y: 50
         width: 18
         height: 14
       alignment: 0
@@ -446,17 +446,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1364c3f72db28542a1b8eda53e840d5
+      spriteID: 875f5dfe44638f441b244110b96175c3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_16
+      name: Hazards_16
       rect:
         serializedVersion: 2
         x: 20
-        y: 51
+        y: 50
         width: 18
         height: 13
       alignment: 0
@@ -466,17 +466,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 089d57c54bab1bb4aa87a31d23ae8942
+      spriteID: 9e288a3e5b1c60445877215056f08105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_17
+      name: Hazards_17
       rect:
         serializedVersion: 2
         x: 39
-        y: 51
+        y: 50
         width: 18
         height: 12
       alignment: 0
@@ -486,17 +486,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 658b2af3fdf29f34a981c34371e6ca8c
+      spriteID: 2324fe178bdd5e444a82d567e7f68d19
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_18
+      name: Hazards_18
       rect:
         serializedVersion: 2
         x: 0
-        y: 34
+        y: 33
         width: 15
         height: 16
       alignment: 0
@@ -506,17 +506,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 566dae000c0b66c44830a8d1b7331b3b
+      spriteID: 15bd61e2c803d1544a6114813500a03f
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_19
+      name: Hazards_19
       rect:
         serializedVersion: 2
         x: 17
-        y: 34
+        y: 33
         width: 17
         height: 12
       alignment: 0
@@ -526,17 +526,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d2ed71891525a640b981ab2cf80d9f0
+      spriteID: 0ea0ae1d3de81264291d7637076ccf02
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_20
+      name: Hazards_20
       rect:
         serializedVersion: 2
         x: 35
-        y: 34
+        y: 33
         width: 17
         height: 12
       alignment: 0
@@ -546,17 +546,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 00d456c8fc4426e4db4604a147597080
+      spriteID: f191ddaed75e5aa40895b9e81dcdc8e0
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_21
+      name: Hazards_21
       rect:
         serializedVersion: 2
         x: 0
-        y: 20
+        y: 19
         width: 16
         height: 13
       alignment: 0
@@ -566,17 +566,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0be4de6d2f0e92d4489fb037e79c8566
+      spriteID: e48d9b7eb40b6414cb30ec7c7626e542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_22
+      name: Hazards_22
       rect:
         serializedVersion: 2
         x: 17
-        y: 20
+        y: 19
         width: 17
         height: 13
       alignment: 0
@@ -586,17 +586,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dc5562d6f830ce04889aeee64df15312
+      spriteID: 3b15f5a4ec74f9144ad87f7ee3a88969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_23
+      name: Hazards_23
       rect:
         serializedVersion: 2
         x: 0
-        y: 3
+        y: 2
         width: 23
         height: 16
       alignment: 0
@@ -606,17 +606,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb3a405eec622d045a3bd66d605a4a8e
+      spriteID: a7c5fa65ae65893469d5e45c16d7a760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_24
+      name: Hazards_24
       rect:
         serializedVersion: 2
         x: 24
-        y: 2
+        y: 1
         width: 21
         height: 16
       alignment: 0
@@ -626,17 +626,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba042604555601943ac23e56a1e7b4d2
+      spriteID: b8a10ec449927b942856abbdc57a20ca
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hazards2_25
+      name: Hazards_25
       rect:
         serializedVersion: 2
         x: 46
-        y: 2
+        y: 1
         width: 18
         height: 16
       alignment: 0
@@ -646,7 +646,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5f06f74141566e442830373da8a6ee4c
+      spriteID: b1c69bbd9b757dd44beaa1a2de0d6dfe
       vertices: []
       indices: 
       edges: []
@@ -654,7 +654,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 8b670475229891346901d28f161227dd
+    spriteID: 14ecb0dee59a69745976360b10d49b2d
     vertices: []
     indices: 
     edges: []
