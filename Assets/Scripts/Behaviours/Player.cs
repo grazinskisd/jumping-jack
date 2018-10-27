@@ -25,12 +25,14 @@ namespace JumpingJack
 
         private PlayerPrefsService _prefService;
         private Camera _camera;
+        private Vector3 _cameraPosition;
         private bool _isPlayerWrapping;
 
         private void Awake()
         {
             _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
             _camera = Camera.main;
+            _cameraPosition = _camera.transform.position;
         }
 
         private void Start()
@@ -76,7 +78,7 @@ namespace JumpingJack
 
         private void CameraShake()
         {
-            _camera.DOShakePosition(0.2f, 1, 100).OnComplete(() => _camera.transform.position = Vector3.back * 10);
+            _camera.DOShakePosition(0.2f, 1, 100).OnComplete(() => _camera.transform.position = _cameraPosition);
         }
 
         private void LateUpdate()
