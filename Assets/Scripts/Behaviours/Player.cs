@@ -7,6 +7,10 @@ namespace JumpingJack
 
     public class Player : MonoBehaviour
     {
+        private const float CAMERA_SHAKE_DURATION = 0.2f;
+        private const int CAMERA_SHAKE_STRENGTH = 1;
+        private const int CHAMERA_SHAKE_VIGRATO = 100;
+
         public PlayerSettings Settings;
         public bool GodMode;
 
@@ -69,16 +73,12 @@ namespace JumpingJack
             {
                 ProcessUserInput();
             }
-
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                CameraShake();
-            }
         }
 
         private void CameraShake()
         {
-            _camera.DOShakePosition(0.2f, 1, 100).OnComplete(() => _camera.transform.position = _cameraPosition);
+            _camera.DOShakePosition(CAMERA_SHAKE_DURATION, CAMERA_SHAKE_STRENGTH, CHAMERA_SHAKE_VIGRATO)
+                .OnComplete(() => _camera.transform.position = _cameraPosition);
         }
 
         private void LateUpdate()
