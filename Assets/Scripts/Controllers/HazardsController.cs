@@ -39,7 +39,7 @@ namespace JumpingJack
 
         private void SetRandomColor(AutoMotion hazard)
         {
-            var renderer = hazard.GetComponent<SpriteRenderer>();
+            var renderer = hazard.GetComponentInChildren<SpriteRenderer>();
             renderer.color = HazardSettings.Colors[Random.Range(0, HazardSettings.Colors.Length)];
         }
 
@@ -82,7 +82,7 @@ namespace JumpingJack
 
         protected override Vector2 GetRandomPosition()
         {
-            return base.GetRandomPosition();
+            return base.GetRandomPosition() + HazardPositionOffset;
         }
 
         protected override Vector2 GetNextSpawnPosition(AutoMotion sender)
