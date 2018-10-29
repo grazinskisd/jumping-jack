@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using System;
+using System.Collections;
 
 namespace JumpingJack
 {
@@ -7,14 +9,21 @@ namespace JumpingJack
 
     public class Player : MonoBehaviour
     {
-        private const float CAMERA_SHAKE_DURATION = 0.2f;
-        private const int CAMERA_SHAKE_STRENGTH = 1;
-        private const int CHAMERA_SHAKE_VIGRATO = 100;
-
         public PlayerSettings Settings;
         public bool GodMode;
+        [Header("Camera shake properties")]
+        public float BadJumpDelay = 0.5f;
+        public float ShakeDuration = 0.2f;
+        public int ShakeStrength = 1;
+        public int ShakeVibrato = 100;
 
         public event PlayerEventHanlder OnJump;
+        public event PlayerEventHanlder OnStun;
+        public event PlayerEventHanlder OnRunLeft;
+        public event PlayerEventHanlder OnRunRight;
+        public event PlayerEventHanlder OnBadJump;
+        public event PlayerEventHanlder OnEndCurrent;
+
         public event PlayerEventHanlder OnGroundReached;
         public event PlayerEventHanlder OnTopReached;
 
@@ -55,10 +64,25 @@ namespace JumpingJack
             }
         }
 
-        private void Stun()
+        private void Stun(float delay = 0)
         {
             _isStunned = true;
             _timeSinceStunned = 0;
+            IssueEvent(OnStun);
+
+            if(delay > 0)
+            {
+                StartCoroutine(DelayedCameraShake(delay));
+            }
+            else
+            {
+                CameraShake();
+            }
+        }
+
+        private IEnumerator DelayedCameraShake(float delay)
+        {
+            yield return new WaitForSeconds(delay);
             CameraShake();
         }
 
@@ -77,7 +101,7 @@ namespace JumpingJack
 
         private void CameraShake()
         {
-            _camera.DOShakePosition(CAMERA_SHAKE_DURATION, CAMERA_SHAKE_STRENGTH, CHAMERA_SHAKE_VIGRATO)
+            _camera.DOShakePosition(ShakeDuration, ShakeStrength, ShakeVibrato)
                 .OnComplete(() => _camera.transform.position = _cameraPosition);
         }
 
@@ -142,7 +166,8 @@ namespace JumpingJack
                 }
                 else
                 {
-                    Stun();
+                    Stun(BadJumpDelay);
+                    IssueEvent(OnBadJump);
                 }
             }
             else if (ShouldFallDown())
@@ -154,13 +179,23 @@ namespace JumpingJack
 
         private void ProcessHorizontalInput()
         {
-            if (Input.GetKey(KeyCode.LeftArrow) && !_isStunned)
+            if (!_isStunned)
             {
-                MovePlayerHorizontaly(-1);
-            }
-            else if (Input.GetKey(KeyCode.RightArrow) && !_isStunned)
-            {
-                MovePlayerHorizontaly(1);
+                if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+                {
+                    Debug.Log("FADADADAD");
+                    IssueEvent(OnEndCurrent);
+                }
+                else if (Input.GetKey(KeyCode.LeftArrow))
+                {
+                    MovePlayerHorizontaly(-1);
+                    IssueEvent(OnRunLeft);
+                }
+                else if (Input.GetKey(KeyCode.RightArrow))
+                {
+                    MovePlayerHorizontaly(1);
+                    IssueEvent(OnRunRight);
+                }
             }
         }
 
@@ -178,6 +213,7 @@ namespace JumpingJack
             {
                 _timeSinceStunned = 0;
                 _isStunned = false;
+                IssueEvent(OnEndCurrent);
             }
         }
 
