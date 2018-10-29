@@ -166,6 +166,7 @@ namespace JumpingJack
                 }
                 else
                 {
+                    CheckForEndConditions();
                     Stun(BadJumpDelay);
                     IssueEvent(OnBadJump);
                 }
