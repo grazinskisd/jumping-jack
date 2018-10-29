@@ -462,6 +462,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: a8a4c522fe5a0a5419040d810145070b, type: 2}
   GodMode: 0
+  BadJumpDelay: 0.2
+  ShakeDuration: 0.15
+  ShakeStrength: 1
+  ShakeVibrato: 100
 --- !u!50 &509130833
 Rigidbody2D:
   serializedVersion: 4
