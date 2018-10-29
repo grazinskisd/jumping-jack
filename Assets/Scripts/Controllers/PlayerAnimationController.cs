@@ -23,10 +23,8 @@ namespace JumpingJack
 
         private void Trigger(Triggers trigger)
         {
-
             if (_lastTrigger != trigger)
             {
-                Debug.Log(trigger.ToString());
                 _lastTrigger = trigger;
                 Animator.SetTrigger(trigger.ToString());
             }

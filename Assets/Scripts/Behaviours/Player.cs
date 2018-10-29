@@ -183,7 +183,6 @@ namespace JumpingJack
             {
                 if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
                 {
-                    Debug.Log("FADADADAD");
                     IssueEvent(OnEndCurrent);
                 }
                 else if (Input.GetKey(KeyCode.LeftArrow))
