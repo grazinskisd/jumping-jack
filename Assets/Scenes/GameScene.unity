@@ -1144,7 +1144,6 @@ MonoBehaviour:
   ObjectPrefab: {fileID: 114471024532678876, guid: 58d1bbe2cac29564b9f732d04f24af2f,
     type: 2}
   Settings: {fileID: 11400000, guid: 39d7970b0b2d63c4282c3f1208c6b200, type: 2}
-  SpawnDispositionFrequency: 100
   HazardSettings: {fileID: 11400000, guid: e9f72e540b6b79b4ba18e9ffb84b7fb1, type: 2}
   HazardMovingDirection: -1
   HazardPositionOffset: {x: 0, y: 0.05}
@@ -1417,8 +1416,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifePrefab: {fileID: 1815651987366244, guid: adbdbc01c191f86458da64ac96c8776a, type: 2}
   Player: {fileID: 509130832}
-  StartPosition: {x: -4.74, y: -3.26}
-  LifePositionOffset: {x: 0.3, y: 0}
+  StartPosition: {x: -4.89, y: -3.26}
+  LifePositionOffset: {x: 0.4, y: 0}
 --- !u!4 &1989655808
 Transform:
   m_ObjectHideFlags: 0
@@ -1667,5 +1666,4 @@ MonoBehaviour:
   ObjectPrefab: {fileID: 114332354284077120, guid: 6fce8de4147371f4a847f5d0032875e4,
     type: 2}
   Settings: {fileID: 11400000, guid: 04d3d262b0c996740837d444303f55b8, type: 2}
-  SpawnDispositionFrequency: 0
   Player: {fileID: 509130832}
