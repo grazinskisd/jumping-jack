@@ -34,6 +34,11 @@ namespace JumpingJack
         {
             Trigger(Triggers.Stun);
         }
+
+        public void JumpFinished()
+        {
+            Trigger(Triggers.Stand);
+        }
     }
 
     public enum Triggers
