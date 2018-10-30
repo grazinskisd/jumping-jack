@@ -18,10 +18,20 @@ namespace JumpingJack
             _objectCount = GetNumberOfObjectsOnStart();
             for (int i = 0; i < _objectCount; i++)
             {
-                AutoMotion newObject = SpawnObject(_direction, GetStartHeight(), GetRandomPosition());
-                SetupNewObject(newObject);
-                UpdateDirection();
+                SpawnStartObject();
             }
+        }
+
+        protected virtual void SpawnStartObject()
+        {
+            AutoMotion newObject = SpawnRandomObject();
+            SetupNewObject(newObject);
+            UpdateDirection();
+        }
+
+        protected virtual AutoMotion SpawnRandomObject()
+        {
+            return SpawnObject(_direction, GetStartHeight(), GetRandomPosition());
         }
 
         protected virtual int GetStartHeight()

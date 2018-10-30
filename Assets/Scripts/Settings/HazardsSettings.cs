@@ -10,7 +10,7 @@ namespace JumpingJack
         public int MovingDirection;
         public Vector2 PositionOffset;
         [Tooltip("Delay for spawning hazard on the bottom level")]
-        public float MinDelayForSpawn;
-        public float MaxDelayForSpawn;
+        public float DelayForSpawn;
+        public int PositionsPerPlatform;
     }
 }

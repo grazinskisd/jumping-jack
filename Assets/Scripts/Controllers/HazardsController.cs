@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace JumpingJack
@@ -9,6 +10,9 @@ namespace JumpingJack
 
         private PlayerPrefsService _prefService;
 
+        private int _currentIndex;
+        private List<Pair> _positions;
+
         private void Awake()
         {
             _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
@@ -17,7 +21,52 @@ namespace JumpingJack
         protected override void Start()
         {
             _direction = HazardSettings.MovingDirection;
+            PopulateRandomPositionsList();
             base.Start();
+        }
+
+        private void PopulateRandomPositionsList()
+        {
+            float maxRightPosition = Settings.ObjectSettings.RightEnd - Settings.ObjectSettings.SpawnDistance;
+            float increment = (2 * maxRightPosition) / HazardSettings.PositionsPerPlatform;
+            int heights = Settings.Heights.Positions.Length - 1;
+            _positions = new List<Pair>();
+
+            for (int i = 0; i <= heights; i++)
+            {
+                for (int j = 1; j <= HazardSettings.PositionsPerPlatform; j++)
+                {
+                    _positions.Add(new Pair()
+                    {
+                        Height = i,
+                        Position = Vector2.right * (-maxRightPosition + increment * j)
+                    });
+                }
+            }
+
+            Shuffle(_positions);
+            _positions = _positions.GetRange(0, GetNumberOfObjectsOnStart());
+        }
+
+        public void Shuffle<T>(IList<T> list)
+        {
+            System.Random rnd = new System.Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rnd.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
+
+        protected override AutoMotion SpawnRandomObject()
+        {
+            var pair = _positions[_currentIndex];
+            _currentIndex++;
+            return SpawnObject(_direction, pair.Height, pair.Position);
         }
 
         protected override int GetStartHeight()
@@ -47,8 +96,7 @@ namespace JumpingJack
         {
             if (sender.CurrentHeightIndex == Settings.Heights.Positions.Length - 2)
             {
-                StartCoroutine(SpawnObjectDelayed(sender,
-                    Random.Range(HazardSettings.MinDelayForSpawn, HazardSettings.MaxDelayForSpawn)));
+                StartCoroutine(SpawnObjectDelayed(sender, HazardSettings.DelayForSpawn));
             }
             else
             {
@@ -84,6 +132,12 @@ namespace JumpingJack
         protected override Vector2 GetNextSpawnPosition(AutoMotion sender)
         {
             return base.GetNextSpawnPosition(sender) + HazardSettings.PositionOffset;
+        }
+
+        private class Pair
+        {
+            public int Height;
+            public Vector2 Position;
         }
     }
 }
