@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using DG.Tweening;
-using System;
 using System.Collections;
 
 namespace JumpingJack
@@ -11,11 +10,6 @@ namespace JumpingJack
     {
         public PlayerSettings Settings;
         public bool GodMode;
-        [Header("Camera shake properties")]
-        public float BadJumpDelay = 0.5f;
-        public float ShakeDuration = 0.2f;
-        public int ShakeStrength = 1;
-        public int ShakeVibrato = 100;
 
         public event PlayerEventHanlder OnJump;
         public event PlayerEventHanlder OnStun;
@@ -104,7 +98,7 @@ namespace JumpingJack
 
         private void CameraShake()
         {
-            _camera.DOShakePosition(ShakeDuration, ShakeStrength, ShakeVibrato)
+            _camera.DOShakePosition(Settings.ShakeDuration, Settings.ShakeStrength, Settings.ShakeVibrato)
                 .OnComplete(() => _camera.transform.position = _cameraPosition);
         }
 
@@ -170,7 +164,7 @@ namespace JumpingJack
                 else
                 {
                     CheckForEndConditions();
-                    Stun(BadJumpDelay);
+                    Stun(Settings.BadJumpDelay);
                     IssueEvent(OnBadJump);
                 }
             }

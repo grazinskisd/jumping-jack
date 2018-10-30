@@ -21,3 +21,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   StunTime: 2
+  BadJumpDelay: 0.2
+  ShakeDuration: 0.2
+  ShakeStrength: 1
+  ShakeVibrato: 100
