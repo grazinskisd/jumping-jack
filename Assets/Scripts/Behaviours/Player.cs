@@ -36,6 +36,8 @@ namespace JumpingJack
         private Camera _camera;
         private Vector3 _cameraPosition;
         private bool _isPlayerWrapping;
+        private bool _isMovingHorizontally;
+        private int _direction;
 
         private void Awake()
         {
@@ -182,17 +184,25 @@ namespace JumpingJack
             {
                 if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
                 {
+                    _isMovingHorizontally = false;
                     IssueEvent(OnEndCurrent);
                 }
-                else if (Input.GetKey(KeyCode.LeftArrow))
+                else if (Input.GetKeyDown(KeyCode.LeftArrow))
                 {
-                    MovePlayerHorizontaly(-1);
+                    _isMovingHorizontally = true;
+                    _direction = -1;
                     IssueEvent(OnRunLeft);
                 }
-                else if (Input.GetKey(KeyCode.RightArrow))
+                else if (Input.GetKeyDown(KeyCode.RightArrow))
                 {
-                    MovePlayerHorizontaly(1);
+                    _isMovingHorizontally = true;
+                    _direction = 1;
                     IssueEvent(OnRunRight);
+                }
+
+                if (_isMovingHorizontally)
+                {
+                    MovePlayerHorizontaly(_direction);
                 }
             }
         }

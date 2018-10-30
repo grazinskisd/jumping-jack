@@ -9,7 +9,6 @@ namespace JumpingJack
         public GameController GameController;
         public AudioSettings Settings;
 
-        private AudioClip _lastClip;
         private bool _isPlayingFinal;
 
         private void Start()
@@ -52,19 +51,14 @@ namespace JumpingJack
         {
             if (!_isPlayingFinal)
             {
-                if (_lastClip == null || _lastClip != clip)
-                {
-                    _lastClip = clip;
-                    AudioSource.clip = clip;
-                    AudioSource.loop = true;
-                    AudioSource.Play();
-                }
+                AudioSource.clip = clip;
+                AudioSource.loop = true;
+                AudioSource.Play();
             }
         }
 
         private void PlayFinal(AudioClip clip)
         {
-            _isPlayingFinal = true;
             AudioSource.Stop();
             AudioSource.clip = clip;
             AudioSource.loop = false;
@@ -75,8 +69,6 @@ namespace JumpingJack
         {
             if (!_isPlayingFinal)
             {
-                _lastClip = null;
-                AudioSource.clip = null;
                 AudioSource.Stop();
             }
         }
