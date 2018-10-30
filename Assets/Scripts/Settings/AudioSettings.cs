@@ -8,7 +8,8 @@ namespace JumpingJack
         [Range(0, 1)]
         public float Volume;
         [Header("Audio clips")]
-        public AudioClip Stand;
+        public AudioClip StandStraight;
+        public AudioClip StandSide;
         public AudioClip Walk;
         public AudioClip Jump;
         public AudioClip Hazard;

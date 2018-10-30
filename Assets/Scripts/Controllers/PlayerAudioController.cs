@@ -13,8 +13,7 @@ namespace JumpingJack
         private void Start()
         {
             AudioSource.volume = Settings.Volume;
-            Play(Settings.Stand);
-            Player.OnEndCurrent += (sender) => Play(Settings.Stand);
+            Player.OnEndCurrent += (sender) => Stop();
             Player.OnJump += (sender) => Play(Settings.Jump);
             Player.OnRunLeft += (sender) => Play(Settings.Walk);
             Player.OnRunRight += (sender) => Play(Settings.Walk);
@@ -31,7 +30,17 @@ namespace JumpingJack
 
         public void JumpFinished()
         {
-            Play(Settings.Stand);
+            Stop();
+        }
+
+        public void OnStandStraight()
+        {
+            PlayShot(Settings.StandStraight);
+        }
+
+        public void OnStandSide()
+        {
+            PlayShot(Settings.StandSide);
         }
 
         private void Play(AudioClip clip)
@@ -43,6 +52,13 @@ namespace JumpingJack
                 AudioSource.loop = true;
                 AudioSource.Play();
             }
+        }
+
+        private void Stop()
+        {
+            _lastClip = null;
+            AudioSource.clip = null;
+            AudioSource.Stop();
         }
 
         private void PlayShot(AudioClip clip)
