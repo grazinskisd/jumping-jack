@@ -19,6 +19,7 @@ namespace JumpingJack
             Player.OnRunRight += (sender) => Trigger(Triggers.RunRight);
             Player.OnBadJump += (sender) => Trigger(Triggers.BadJump);
             Player.OnStun += (sender) => Trigger(Triggers.Stun);
+            Player.OnFall += (sender) => Trigger(Triggers.Fall);
         }
 
         private void Trigger(Triggers trigger)
@@ -48,6 +49,7 @@ namespace JumpingJack
         BadJump,
         RunLeft,
         RunRight,
-        Stun
+        Stun,
+        Fall
     }
 }

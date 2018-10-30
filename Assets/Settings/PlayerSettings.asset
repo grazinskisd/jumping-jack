@@ -20,4 +20,4 @@ MonoBehaviour:
   HoleLayerMask:
     serializedVersion: 2
     m_Bits: 512
-  StunTime: 1.5
+  StunTime: 2

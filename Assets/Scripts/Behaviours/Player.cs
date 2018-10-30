@@ -22,7 +22,9 @@ namespace JumpingJack
         public event PlayerEventHanlder OnRunLeft;
         public event PlayerEventHanlder OnRunRight;
         public event PlayerEventHanlder OnBadJump;
+        public event PlayerEventHanlder OnHitHazard;
         public event PlayerEventHanlder OnEndCurrent;
+        public event PlayerEventHanlder OnFall;
 
         public event PlayerEventHanlder OnGroundReached;
         public event PlayerEventHanlder OnTopReached;
@@ -61,6 +63,7 @@ namespace JumpingJack
             if (!_godMode)
             {
                 Stun();
+                IssueEvent(OnHitHazard);
             }
         }
 
@@ -175,6 +178,7 @@ namespace JumpingJack
             {
                 DecrementHeightIndex();
                 MovePlayerVertically();
+                IssueEvent(OnFall);
             }
         }
 
