@@ -357,6 +357,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 465743169}
   Player: {fileID: 509130832}
+  GameController: {fileID: 1074889255}
   Settings: {fileID: 11400000, guid: 51df85b77abeca947b287c07ffcd78c2, type: 2}
 --- !u!82 &465743169
 AudioSource:
@@ -573,10 +574,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Settings: {fileID: 11400000, guid: a8a4c522fe5a0a5419040d810145070b, type: 2}
   GodMode: 0
-  BadJumpDelay: 0.2
-  ShakeDuration: 0.15
-  ShakeStrength: 1
-  ShakeVibrato: 100
 --- !u!50 &509130833
 Rigidbody2D:
   serializedVersion: 4
@@ -1203,6 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LifeController: {fileID: 1989655807}
   Player: {fileID: 509130832}
+  SceneLoadDelay: 2
 --- !u!4 &1074889256
 Transform:
   m_ObjectHideFlags: 0
@@ -1322,10 +1320,6 @@ MonoBehaviour:
     type: 2}
   Settings: {fileID: 11400000, guid: 39d7970b0b2d63c4282c3f1208c6b200, type: 2}
   HazardSettings: {fileID: 11400000, guid: e9f72e540b6b79b4ba18e9ffb84b7fb1, type: 2}
-  HazardMovingDirection: -1
-  HazardPositionOffset: {x: 0, y: 0.05}
-  MinDelayForSpawn: 1
-  MaxDelayForSpawn: 2
 --- !u!4 &1327761035
 Transform:
   m_ObjectHideFlags: 0

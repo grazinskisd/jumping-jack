@@ -257,6 +257,7 @@ namespace JumpingJack
             }
             else if (_currentHeightIndex == Settings.Heights.Positions.Length - 1)
             {
+                GodMode = true;
                 IssueEvent(OnTopReached);
             }
         }

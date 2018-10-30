@@ -6,9 +6,11 @@ namespace JumpingJack
     {
         public AudioSource AudioSource;
         public Player Player;
+        public GameController GameController;
         public AudioSettings Settings;
 
         private AudioClip _lastClip;
+        private bool _isPlayingFinal;
 
         private void Start()
         {
@@ -21,6 +23,9 @@ namespace JumpingJack
             Player.OnStun += (sender) => Play(Settings.Stun);
             Player.OnHitHazard += (sender) => PlayShot(Settings.Hazard);
             Player.OnFall += (sender) => Play(Settings.Fall);
+
+            GameController.OnWin += () => PlayFinal(Settings.Win);
+            GameController.OnLose += () => PlayFinal(Settings.Lose);
         }
 
         public void BadJumpEnd()
@@ -45,25 +50,43 @@ namespace JumpingJack
 
         private void Play(AudioClip clip)
         {
-            if (_lastClip == null || _lastClip != clip)
+            if (!_isPlayingFinal)
             {
-                _lastClip = clip;
-                AudioSource.clip = clip;
-                AudioSource.loop = true;
-                AudioSource.Play();
+                if (_lastClip == null || _lastClip != clip)
+                {
+                    _lastClip = clip;
+                    AudioSource.clip = clip;
+                    AudioSource.loop = true;
+                    AudioSource.Play();
+                }
             }
+        }
+
+        private void PlayFinal(AudioClip clip)
+        {
+            _isPlayingFinal = true;
+            AudioSource.Stop();
+            AudioSource.clip = clip;
+            AudioSource.loop = false;
+            AudioSource.Play();
         }
 
         private void Stop()
         {
-            _lastClip = null;
-            AudioSource.clip = null;
-            AudioSource.Stop();
+            if (!_isPlayingFinal)
+            {
+                _lastClip = null;
+                AudioSource.clip = null;
+                AudioSource.Stop();
+            }
         }
 
         private void PlayShot(AudioClip clip)
         {
-            AudioSource.PlayOneShot(clip);
+            if (!_isPlayingFinal)
+            {
+                AudioSource.PlayOneShot(clip);
+            }
         }
     }
 }

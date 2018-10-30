@@ -16,5 +16,7 @@ namespace JumpingJack
         public AudioClip BadJump;
         public AudioClip Stun;
         public AudioClip Fall;
+        public AudioClip Win;
+        public AudioClip Lose;
     }
 }

@@ -12,10 +12,13 @@ MonoBehaviour:
   m_Name: AudioSettings
   m_EditorClassIdentifier: 
   Volume: 0.563
-  Stand: {fileID: 8300000, guid: b0bbfd45d86ddba44b7f511f47a94e34, type: 3}
+  StandStraight: {fileID: 8300000, guid: 8ee384364d1f12c4289c49e578320672, type: 3}
+  StandSide: {fileID: 8300000, guid: cb4b9edea57c3f64d80bae89ed414d21, type: 3}
   Walk: {fileID: 8300000, guid: a6e50ff4e5e55b9428ef881f052434af, type: 3}
   Jump: {fileID: 8300000, guid: bf21213f327182747b76b2c8e183ea61, type: 3}
   Hazard: {fileID: 8300000, guid: 73206d5b2bc81fd4a920ea4731183ce9, type: 3}
   BadJump: {fileID: 8300000, guid: 6325ae740cbd5134dbaf97fe6c568933, type: 3}
   Stun: {fileID: 8300000, guid: fefd50f38ee67be49966f45c1b90d110, type: 3}
   Fall: {fileID: 8300000, guid: bf9625339e1c35c46b97b0233660372a, type: 3}
+  Win: {fileID: 8300000, guid: 74a1f0b29d62b8b418c3b7848a9b7928, type: 3}
+  Lose: {fileID: 8300000, guid: 5390bdd455351cf4397b47f552995abb, type: 3}
