@@ -6,11 +6,6 @@ namespace JumpingJack
     public class HazardsController: AutoMotionController
     {
         public HazardsSettings HazardSettings;
-        public int HazardMovingDirection;
-        public Vector2 HazardPositionOffset;
-        [Tooltip("Delay for spawning hazard on the bottom level")]
-        public float MinDelayForSpawn;
-        public float MaxDelayForSpawn;
 
         private PlayerPrefsService _prefService;
 
@@ -21,7 +16,7 @@ namespace JumpingJack
 
         protected override void Start()
         {
-            _direction = HazardMovingDirection;
+            _direction = HazardSettings.MovingDirection;
             base.Start();
         }
 
@@ -52,7 +47,8 @@ namespace JumpingJack
         {
             if (sender.CurrentHeightIndex == Settings.Heights.Positions.Length - 2)
             {
-                StartCoroutine(SpawnObjectDelayed(sender, Random.Range(MinDelayForSpawn, MaxDelayForSpawn)));
+                StartCoroutine(SpawnObjectDelayed(sender,
+                    Random.Range(HazardSettings.MinDelayForSpawn, HazardSettings.MaxDelayForSpawn)));
             }
             else
             {
@@ -82,12 +78,12 @@ namespace JumpingJack
 
         protected override Vector2 GetRandomPosition()
         {
-            return base.GetRandomPosition() + HazardPositionOffset;
+            return base.GetRandomPosition() + HazardSettings.PositionOffset;
         }
 
         protected override Vector2 GetNextSpawnPosition(AutoMotion sender)
         {
-            return base.GetNextSpawnPosition(sender) + HazardPositionOffset;
+            return base.GetNextSpawnPosition(sender) + HazardSettings.PositionOffset;
         }
     }
 }
