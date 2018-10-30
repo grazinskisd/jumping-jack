@@ -9,6 +9,9 @@ namespace JumpingJack
     {
         public float WaitTime;
         public AppearingUILetters AppearingText;
+        public AudioSource AudioSource;
+        public AudioClip LetterRaise;
+        public PeopleLetters PeopleLetters;
 
         private int _level = 0;
         private PlayerPrefsService _prefService;
@@ -20,14 +23,20 @@ namespace JumpingJack
 
         private void Start()
         {
-            AppearingText.StartDisplaying();
             AppearingText.OnFinished += LoadGame;
             _prefService.ResetToStart();
+            PeopleLetters.OnLettersRaising += OnLettersRaise;
+            PeopleLetters.OnAllRaised += AppearingText.StartDisplaying;
         }
 
         private void Update()
         {
             CheckForCheatInput();
+        }
+
+        public void OnLettersRaise()
+        {
+            AudioSource.PlayOneShot(LetterRaise);
         }
 
         /// <summary>

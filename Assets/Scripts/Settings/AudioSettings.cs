@@ -5,8 +5,6 @@ namespace JumpingJack
     [CreateAssetMenu(menuName = "JumpingJack/AudioSettings")]
     public class AudioSettings: ScriptableObject
     {
-        [Range(0, 1)]
-        public float Volume;
         [Header("Audio clips")]
         public AudioClip StandStraight;
         public AudioClip StandSide;

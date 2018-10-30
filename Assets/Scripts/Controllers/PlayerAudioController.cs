@@ -13,7 +13,6 @@ namespace JumpingJack
 
         private void Start()
         {
-            AudioSource.volume = Settings.Volume;
             Player.OnEndCurrent += (sender) => Stop();
             Player.OnJump += (sender) => Play(Settings.Jump);
             Player.OnRunLeft += (sender) => Play(Settings.Walk);
