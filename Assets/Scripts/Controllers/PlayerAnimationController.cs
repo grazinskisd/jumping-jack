@@ -2,10 +2,14 @@
 
 namespace JumpingJack
 {
+    public delegate void AnimationEventHandler();
+
     public class PlayerAnimationController: MonoBehaviour
     {
         public Animator Animator;
         public Player Player;
+
+        public event AnimationEventHandler OnHeadBump;
 
         private Triggers _lastTrigger;
 
@@ -39,6 +43,19 @@ namespace JumpingJack
         public void JumpFinished()
         {
             Trigger(Triggers.Stand);
+        }
+
+        public void HeadBump()
+        {
+            IssueEvent(OnHeadBump);
+        }
+
+        public void IssueEvent(AnimationEventHandler animationEvent)
+        {
+            if(animationEvent != null)
+            {
+                animationEvent();
+            }
         }
     }
 
