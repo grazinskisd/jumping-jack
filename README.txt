@@ -1,7 +1,23 @@
-Jumping Jack ZX Spectrum Clone
+Clone of Jumping Jack for ZX Spectrum
 
-[Test](url.com)
+--- BUILD INFORMATION ---
 
+Built with Unity 2018.2.2f1 Personal(64bit) on Windows 10.
+
+Launching the game options:
+    1. Prod-Build folder should contain a built project that you should be able to run
+        1.1. Go to /Prod-Build/ and double click on JumpingJack.exe
+    2. Download build 
+        2.1. Download file at https://drive.google.com/open?id=1TZ2wjztn5NSjZRHxSR52ry0OdHdtmsxg
+        2.2. Extract the project
+        2.3. Go to /Prod-Build/ and double click on JumpingJack.exe
+    3. Build project yourself or launch it in the Unity editor
+        3.1. Downlaod and install the correct Unity build at https://unity3d.com/get-unity/download?thank-you=update&download_nid=57864&os=Win
+        3.2. Clone this repository
+        3.3. Open the project in Unity
+        3.4. Play in editor or build and run
+
+--- CONTROLS ---
 
 Player Controls:
 * [Left Arrow] 	- Move Left
