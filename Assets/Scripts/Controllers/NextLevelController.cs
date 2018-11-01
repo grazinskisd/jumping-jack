@@ -40,6 +40,11 @@ namespace JumpingJack
             if (_prefService.ShouldAwardExtraLife())
             {
                 AppearingText.OnFinished += ShowExtraLife;
+
+                if (_prefService.GetInt(Prefs.Lives) < _prefService.LifeCountCap)
+                {
+                    _prefService.Increment(Prefs.Lives, 1);
+                }
             }
             else
             {

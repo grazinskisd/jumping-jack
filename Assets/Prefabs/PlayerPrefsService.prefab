@@ -54,3 +54,4 @@ MonoBehaviour:
   MaxLevel: 20
   ExtraLivesLevels: 060000000b00000010000000
   StartLifeCount: 6
+  LifeCountCap: 8

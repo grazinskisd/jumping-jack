@@ -7,6 +7,7 @@ namespace JumpingJack
         public int MaxLevel;
         public int[] ExtraLivesLevels;
         public int StartLifeCount;
+        public int LifeCountCap;
 
         private static bool _isCreated = false;
 

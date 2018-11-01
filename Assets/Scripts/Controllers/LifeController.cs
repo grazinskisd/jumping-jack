@@ -28,10 +28,6 @@ namespace JumpingJack
         private void Start()
         {
             _remainingLives = _prefService.GetInt(Prefs.Lives);
-            if (_prefService.ShouldAwardExtraLife())
-            {
-                _remainingLives++;
-            }
             _lives = new List<GameObject>(_remainingLives);
             Player.OnGroundReached += DecrementLife;
 
