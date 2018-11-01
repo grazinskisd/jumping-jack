@@ -62,6 +62,7 @@ namespace JumpingJack
             AudioSource.clip = clip;
             AudioSource.loop = false;
             AudioSource.Play();
+            _isPlayingFinal = true;
         }
 
         private void Stop()
