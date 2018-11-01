@@ -10,11 +10,11 @@ Game Controls:
 * [Space] 	- Retart game
 
 Cheats:
-* God Mode
+* [G] 	- God Mode
 	* Press [G] in the introduction screen to set God Mode.
 	* God Mode allows you to move without reacting to holes or hazards.
 	* With God Mode you can quickly test if the whole game is there.
-* Level selection
+* [A]	- Level selection
 	* Press [A] in the introduction scene to activate.
 	* A display of current level will appear at the top of the screen.
 	* Continue pressing [A] to get to desired level, in range (1..20).
