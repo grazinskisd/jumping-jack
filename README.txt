@@ -22,5 +22,5 @@ Cheats:
 		you need to press [Enter] when you are satisfied with your selection.
 	* With this cheat you can test a specific level.
 * These cheat can be activated separately or together.
-* In case you want to reset and don't want to use cheats,
-	just press [Space] to restart the game.
+* In case you want to reset, select a different cheat combination 
+	or don't want to use cheats, just press [Space] to restart the game.
