@@ -5,7 +5,7 @@ namespace JumpingJack
     public class PlayerAudioController: MonoBehaviour
     {
         public AudioSource AudioSource;
-        public Player Player;
+        public PlayerController Player;
         public GameController GameController;
         public AudioSettings Settings;
 

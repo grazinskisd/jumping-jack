@@ -4,9 +4,9 @@ using System.Collections;
 
 namespace JumpingJack
 {
-    public delegate void PlayerEventHanlder(Player sender);
+    public delegate void PlayerEventHanlder(PlayerController sender);
 
-    public class Player : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         public PlayerSettings Settings;
         public bool GodMode;

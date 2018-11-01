@@ -7,7 +7,7 @@ namespace JumpingJack
         private const string HIGHSCORE_FORMAT = "HI{0:00000}";
         private const string SCORE_FORMAT = "SC{0:00000}";
 
-        public Player Player;
+        public PlayerController Player;
         public TextMesh HighscoreText;
         public TextMesh ScoreText;
         public int ScoreIncrement;
@@ -30,7 +30,7 @@ namespace JumpingJack
             Player.OnJump += IncrementScore;
         }
 
-        private void IncrementScore(Player sender)
+        private void IncrementScore(PlayerController sender)
         {
             _currentScore += ScoreIncrement * (_prefService.GetInt(Prefs.Level) + 1);
             _prefService.SetInt(Prefs.Score, _currentScore);

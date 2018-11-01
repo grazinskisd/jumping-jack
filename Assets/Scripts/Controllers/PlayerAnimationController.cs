@@ -7,7 +7,7 @@ namespace JumpingJack
     public class PlayerAnimationController: MonoBehaviour
     {
         public Animator Animator;
-        public Player Player;
+        public PlayerController Player;
 
         public event AnimationEventHandler OnHeadBump;
 

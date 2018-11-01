@@ -6,7 +6,7 @@ namespace JumpingJack
     public class CameraController: MonoBehaviour
     {
         public Camera Camera;
-        public Player Player;
+        public PlayerController Player;
         public PlayerAnimationController AnimationController;
         public CameraSettings Settings;
 

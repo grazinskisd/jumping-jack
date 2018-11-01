@@ -9,7 +9,7 @@ namespace JumpingJack
     public class GameController: MonoBehaviour
     {
         public LifeController LifeController;
-        public Player Player;
+        public PlayerController Player;
         public float SceneLoadDelay;
 
         public event GameEventHandler OnWin;
@@ -28,7 +28,7 @@ namespace JumpingJack
             Player.OnTopReached += ProcessWin;
         }
 
-        private void ProcessWin(Player sender)
+        private void ProcessWin(PlayerController sender)
         {
             _prefService.Increment(Prefs.Level, 1);
             if (!_prefService.WasLastLevel())

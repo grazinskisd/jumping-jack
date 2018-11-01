@@ -8,7 +8,7 @@ namespace JumpingJack
     public class LifeController: MonoBehaviour
     {
         public GameObject LifePrefab;
-        public Player Player;
+        public PlayerController Player;
 
         public Vector2 StartPosition;
         public Vector2 LifePositionOffset;
@@ -41,7 +41,7 @@ namespace JumpingJack
             }
         }
 
-        private void DecrementLife(Player sender)
+        private void DecrementLife(PlayerController sender)
         {
             var life = _lives[_lives.Count - 1];
             _lives.Remove(life);
