@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: e77c08390e685744194b40bd708bbf75
+guid: 500afeff024f4ca44bfadce63dcccbaa
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
-  fontSize: 72
-  forceTextureCase: 0
+  fontSize: 16
+  forceTextureCase: -2
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Chocolate Covered Raindrops
+  fontName: Manaspace
   fontNames:
-  - Chocolate Covered Raindrops
+  - Manaspace
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
