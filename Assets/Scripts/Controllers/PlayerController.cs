@@ -155,7 +155,7 @@ namespace JumpingJack
 
         private void ProcessVerticalInput()
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && !_isStunned)
+            if (Input.GetKeyDown(Settings.MoveUp) && !_isStunned)
             {
                 if (CanMoveUp())
                 {
@@ -180,20 +180,26 @@ namespace JumpingJack
 
         private void ProcessHorizontalInput()
         {
+            if (AreInputArrowsUp())
+            {
+                _isMovingHorizontally = false;
+            }
+
             if (!_isStunned)
             {
-                if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+                if (AreInputArrowsUp())
                 {
-                    _isMovingHorizontally = false;
                     IssueEvent(OnEndCurrent);
+                    _isMovingHorizontally = false;
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow))
+
+                if (Input.GetKeyDown(Settings.MoveLeft))
                 {
                     _isMovingHorizontally = true;
                     _direction = -1;
                     IssueEvent(OnRunLeft);
                 }
-                else if (Input.GetKeyDown(KeyCode.RightArrow))
+                else if (Input.GetKeyDown(Settings.MoveRight))
                 {
                     _isMovingHorizontally = true;
                     _direction = 1;
@@ -205,6 +211,11 @@ namespace JumpingJack
                     MovePlayerHorizontaly(_direction);
                 }
             }
+        }
+
+        private bool AreInputArrowsUp()
+        {
+            return Input.GetKeyUp(Settings.MoveLeft) || Input.GetKeyUp(Settings.MoveRight);
         }
 
         private void MovePlayerHorizontaly(int direction)
@@ -267,7 +278,7 @@ namespace JumpingJack
             }
             else if (_currentHeightIndex == Settings.Heights.Positions.Length - 1)
             {
-                GodMode = true;
+                _godMode = true;
                 IssueEvent(OnTopReached);
             }
         }
