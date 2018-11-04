@@ -5,7 +5,8 @@ namespace JumpingJack
     public class PlayerAudioController: MonoBehaviour
     {
         public AudioSource AudioSource;
-        public PlayerController Player;
+        public Player Player;
+        public PlayerAnimatorEvents AnimationEvents;
         public GameController GameController;
         public AudioSettings Settings;
 
@@ -13,37 +14,19 @@ namespace JumpingJack
 
         private void Start()
         {
-            Player.OnEndCurrent += (sender) => Stop();
+            Player.OnStand += (sender) => Stop();
             Player.OnJump += (sender) => Play(Settings.Jump);
-            Player.OnRunLeft += (sender) => Play(Settings.Walk);
-            Player.OnRunRight += (sender) => Play(Settings.Walk);
+            Player.OnMove += (sender) => Play(Settings.Walk);
             Player.OnBadJump += (sender) => Play(Settings.BadJump);
             Player.OnStun += (sender) => Play(Settings.Stun);
             Player.OnHitHazard += (sender) => PlayShot(Settings.Hazard);
             Player.OnFall += (sender) => Play(Settings.Fall);
 
+            AnimationEvents.OnStandStraight += () => PlayShot(Settings.StandStraight);
+            AnimationEvents.OnStandSide += () => PlayShot(Settings.StandSide);
+
             GameController.OnWin += () => PlayFinal(Settings.Win);
             GameController.OnLose += () => PlayFinal(Settings.Lose);
-        }
-
-        public void BadJumpEnd()
-        {
-            Play(Settings.Stun);
-        }
-
-        public void JumpFinished()
-        {
-            Stop();
-        }
-
-        public void OnStandStraight()
-        {
-            PlayShot(Settings.StandStraight);
-        }
-
-        public void OnStandSide()
-        {
-            PlayShot(Settings.StandSide);
         }
 
         private void Play(AudioClip clip)

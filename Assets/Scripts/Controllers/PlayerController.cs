@@ -3,7 +3,7 @@ using DG.Tweening;
 
 namespace JumpingJack
 {
-    public delegate void PlayerEventHanlder(PlayerController sender);
+    //public delegate void PlayerEventHanlder(PlayerController sender);
 
     public class PlayerController : MonoBehaviour
     {
@@ -77,44 +77,6 @@ namespace JumpingJack
             {
                 ProcessUserInput();
             }
-        }
-
-        private void LateUpdate()
-        {
-            WrapPlayerMovement();
-        }
-
-        private void WrapPlayerMovement()
-        {
-            if (!_isPlayerWrapping && ShouldWrapPlayerPosition())
-            {
-                SlidePlayerOut();
-            }
-        }
-
-        private bool ShouldWrapPlayerPosition()
-        {
-            return Mathf.Abs(transform.position.x) > Settings.RightEndPosition;
-        }
-
-        private void SlidePlayerOut()
-        {
-            Vector3 playerPos = transform.position;
-            float sign = playerPos.x / Mathf.Abs(playerPos.x);
-            float dist = Settings.RightSpawnPosition - Settings.RightEndPosition;
-            float dur = dist / Settings.MoveSpeed;
-            _isPlayerWrapping = true;
-
-            transform.DOMoveX(sign * Settings.RightSpawnPosition, dur)
-                .OnComplete(() => SlinePlayerIn(playerPos, sign, dur));
-        }
-
-        private void SlinePlayerIn(Vector3 playerPos, float sign, float dur)
-        {
-            playerPos.x = -sign * Settings.RightSpawnPosition;
-            transform.position = playerPos;
-            transform.DOMoveX(-sign * Settings.RightEndPosition, dur)
-                .OnComplete(ResetIsPlayerWrapping);
         }
 
         private void ResetIsPlayerWrapping()
@@ -226,7 +188,9 @@ namespace JumpingJack
         private void MovePlayerVertically()
         {
             var desiredHeight = Settings.Heights.Positions[_currentHeightIndex].y;
-            transform.DOLocalMoveY(desiredHeight, Settings.VerticalMoveDuration).SetEase(Ease.Linear).OnComplete(ProcessHeightReached);
+            transform.DOLocalMoveY(desiredHeight, Settings.VerticalMoveDuration)
+                .SetEase(Ease.Linear)
+                .OnComplete(ProcessHeightReached);
             _isMovingVertically = true;
         }
 
@@ -258,7 +222,7 @@ namespace JumpingJack
             }
         }
 
-        private bool CanMoveUp()
+        public bool CanMoveUp()
         {
             if(HasHole(Vector2.up) || _godMode)
             {
@@ -267,7 +231,7 @@ namespace JumpingJack
             return false;
         }
 
-        private bool ShouldFallDown()
+        public bool ShouldFallDown()
         {
             if (HasHole(Vector2.down) && !_godMode)
             {
@@ -285,7 +249,7 @@ namespace JumpingJack
         {
             if(eventToIssue != null)
             {
-                eventToIssue(this);
+                eventToIssue(GetComponent<Player>());
             }
         }
     }

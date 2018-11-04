@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f622f1eb3cc97ef44b97f882bb71cbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 509130832}
+  Player: {fileID: 509130830}
   HighscoreText: {fileID: 795099966}
   ScoreText: {fileID: 984478513}
   ScoreIncrement: 5
@@ -244,9 +244,9 @@ GameObject:
   - component: {fileID: 465743164}
   - component: {fileID: 465743166}
   - component: {fileID: 465743165}
-  - component: {fileID: 465743167}
   - component: {fileID: 465743168}
   - component: {fileID: 465743169}
+  - component: {fileID: 465743167}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -339,11 +339,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 465743163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a252c0e30167a49829a347d9e26950, type: 3}
+  m_Script: {fileID: 11500000, guid: 77bbaf860207b744c86ad3a7974464bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animator: {fileID: 465743165}
-  Player: {fileID: 509130832}
 --- !u!114 &465743168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioSource: {fileID: 465743169}
-  Player: {fileID: 509130832}
+  Player: {fileID: 509130830}
+  AnimationEvents: {fileID: 465743167}
   GameController: {fileID: 1074889255}
   Settings: {fileID: 11400000, guid: 51df85b77abeca947b287c07ffcd78c2, type: 2}
 --- !u!82 &465743169
@@ -537,9 +536,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 509130831}
-  - component: {fileID: 509130832}
   - component: {fileID: 509130833}
   - component: {fileID: 509130834}
+  - component: {fileID: 509130830}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -547,6 +546,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &509130830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 509130829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2681eb1cdc9226942b6c08faeef8a253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Settings: {fileID: 11400000, guid: a8a4c522fe5a0a5419040d810145070b, type: 2}
+  Animator: {fileID: 465743165}
+  AnimationEvents: {fileID: 465743167}
+  GodMode: 0
+  PreviousHeightIndex: 0
+  CurrentHeightIndex: 0
 --- !u!4 &509130831
 Transform:
   m_ObjectHideFlags: 0
@@ -561,19 +577,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &509130832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 509130829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5eed78b72ef3da94784301e85784b9bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Settings: {fileID: 11400000, guid: a8a4c522fe5a0a5419040d810145070b, type: 2}
-  GodMode: 0
 --- !u!50 &509130833
 Rigidbody2D:
   serializedVersion: 4
@@ -656,8 +659,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 519420031}
-  Player: {fileID: 509130832}
-  AnimationController: {fileID: 465743167}
+  Player: {fileID: 509130830}
+  AnimationEvents: {fileID: 465743167}
   Settings: {fileID: 11400000, guid: ff572d7601631054eb88f76ce7772229, type: 2}
 --- !u!20 &519420031
 Camera:
@@ -1215,7 +1218,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifeController: {fileID: 1989655807}
-  Player: {fileID: 509130832}
+  Player: {fileID: 509130830}
   SceneLoadDelay: 2
 --- !u!4 &1074889256
 Transform:
@@ -1602,7 +1605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LifePrefab: {fileID: 1815651987366244, guid: adbdbc01c191f86458da64ac96c8776a, type: 2}
-  Player: {fileID: 509130832}
+  Player: {fileID: 509130830}
   StartPosition: {x: -4.89, y: -3.26}
   LifePositionOffset: {x: 0.4, y: 0}
 --- !u!4 &1989655808
@@ -1853,4 +1856,4 @@ MonoBehaviour:
   ObjectPrefab: {fileID: 114332354284077120, guid: 6fce8de4147371f4a847f5d0032875e4,
     type: 2}
   Settings: {fileID: 11400000, guid: 04d3d262b0c996740837d444303f55b8, type: 2}
-  Player: {fileID: 509130832}
+  Player: {fileID: 509130830}

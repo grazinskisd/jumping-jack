@@ -7,15 +7,15 @@ namespace JumpingJack
     public class CameraController: MonoBehaviour
     {
         public Camera Camera;
-        public PlayerController Player;
-        public PlayerAnimationController AnimationController;
+        public Player Player;
+        public PlayerAnimatorEvents AnimationEvents;
         public CameraSettings Settings;
         private Vector3 _cameraPosition;
 
         private void Start()
         {
             _cameraPosition = Camera.transform.position;
-            AnimationController.OnHeadBump += () => FlashBackground(Settings.BadJumpBackground);
+            AnimationEvents.OnHeadBump += () => FlashBackground(Settings.BadJumpBackground);
             Player.OnHitHazard += (sender) => FlashBackground(Settings.HazardHitBackground);
             Player.OnStun += (sender) => CameraShake();
         }

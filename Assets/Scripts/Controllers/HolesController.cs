@@ -5,7 +5,7 @@ namespace JumpingJack
 {
     public class HolesController: AutoMotionController
     {
-        public PlayerController Player;
+        public Player Player;
 
         private List<AutoMotion> _holes = new List<AutoMotion>();
         private int _holeCount = 0;
@@ -29,7 +29,7 @@ namespace JumpingJack
             _direction *= -1;
         }
 
-        private void SpawnRandomHole(PlayerController sender)
+        private void SpawnRandomHole(Player sender)
         {
             if (_holeCount < Settings.ObjectCountCap)
             {
