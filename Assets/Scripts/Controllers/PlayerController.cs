@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using DG.Tweening;
-using System.Collections;
 
 namespace JumpingJack
 {
@@ -33,8 +32,7 @@ namespace JumpingJack
         private bool _godMode;
 
         private PlayerPrefsService _prefService;
-        private Camera _camera;
-        private Vector3 _cameraPosition;
+
         private bool _isPlayerWrapping;
         private bool _isMovingHorizontally;
         private int _direction;
@@ -42,8 +40,6 @@ namespace JumpingJack
         private void Awake()
         {
             _prefService = GameObject.FindObjectOfType<PlayerPrefsService>();
-            _camera = Camera.main;
-            _cameraPosition = _camera.transform.position;
         }
 
         private void Start()
@@ -63,26 +59,11 @@ namespace JumpingJack
             }
         }
 
-        private void Stun(float delay = 0)
+        private void Stun()
         {
             _isStunned = true;
             _timeSinceStunned = 0;
             IssueEvent(OnStun);
-
-            if(delay > 0)
-            {
-                StartCoroutine(DelayedCameraShake(delay));
-            }
-            else
-            {
-                CameraShake();
-            }
-        }
-
-        private IEnumerator DelayedCameraShake(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-            CameraShake();
         }
 
         private void Update()
@@ -96,12 +77,6 @@ namespace JumpingJack
             {
                 ProcessUserInput();
             }
-        }
-
-        private void CameraShake()
-        {
-            _camera.DOShakePosition(Settings.ShakeDuration, Settings.ShakeStrength, Settings.ShakeVibrato)
-                .OnComplete(() => _camera.transform.position = _cameraPosition);
         }
 
         private void LateUpdate()
@@ -166,7 +141,7 @@ namespace JumpingJack
                 else
                 {
                     CheckForEndConditions();
-                    Stun(Settings.BadJumpDelay);
+                    Stun();
                     IssueEvent(OnBadJump);
                 }
             }

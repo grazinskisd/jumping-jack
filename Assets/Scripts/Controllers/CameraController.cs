@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 
 namespace JumpingJack
@@ -9,11 +10,14 @@ namespace JumpingJack
         public PlayerController Player;
         public PlayerAnimationController AnimationController;
         public CameraSettings Settings;
+        private Vector3 _cameraPosition;
 
         private void Start()
         {
+            _cameraPosition = Camera.transform.position;
             AnimationController.OnHeadBump += () => FlashBackground(Settings.BadJumpBackground);
             Player.OnHitHazard += (sender) => FlashBackground(Settings.HazardHitBackground);
+            Player.OnStun += (sender) => CameraShake();
         }
 
         private void FlashBackgroundWithHazardColor(AutoMotion hazard)
@@ -36,6 +40,12 @@ namespace JumpingJack
         private void ChangeBackgroundColor(Color color)
         {
             Camera.backgroundColor = color;
+        }
+
+        private void CameraShake()
+        {
+            Camera.DOShakePosition(Settings.ShakeDuration, Settings.ShakeStrength, Settings.ShakeVibrato)
+                .OnComplete(() => Camera.transform.position = _cameraPosition);
         }
     }
 }
