@@ -10,6 +10,8 @@ namespace JumpingJack
         public event AnimationEventHandler OnBadJumpEnd;
         public event AnimationEventHandler OnStandStraight;
         public event AnimationEventHandler OnStandSide;
+        public event AnimationEventHandler OnJumpEnd;
+        public event AnimationEventHandler OnFallEnd;
 
         public void HeadBump()
         {
@@ -29,6 +31,16 @@ namespace JumpingJack
         public void StandSide()
         {
             IssueEvent(OnStandSide);
+        }
+
+        public void FallEnd()
+        {
+            IssueEvent(OnFallEnd);
+        }
+
+        public void JumpEnd()
+        {
+            IssueEvent(OnJumpEnd);
         }
 
         private void IssueEvent(AnimationEventHandler animationEvent)

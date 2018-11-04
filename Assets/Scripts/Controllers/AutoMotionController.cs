@@ -6,19 +6,55 @@ namespace JumpingJack
     public class AutoMotionController: MonoBehaviour
     {
         public AutoMotion ObjectPrefab;
+        public Player Player;
+        public PlayerAnimatorEvents AnimatorEvents;
         public AutoMotionControllerSettings Settings;
 
         protected List<AutoMotion> _objects;
         protected int _direction;
         protected int _objectCount;
 
+        private float _timeScale;
+
         protected virtual void Start()
         {
             _objects = new List<AutoMotion>();
             _objectCount = GetNumberOfObjectsOnStart();
+            SetupTimeScaleEvents();
             for (int i = 0; i < _objectCount; i++)
             {
                 SpawnStartObject();
+            }
+        }
+
+        private void SetupTimeScaleEvents()
+        {
+            ResetTimeScale();
+            Player.OnJump += SlowDown;
+            Player.OnFall += SlowDown;
+            Player.OnBadJump += SlowDown;
+            AnimatorEvents.OnFallEnd += ResetTimeScale;
+            AnimatorEvents.OnJumpEnd += ResetTimeScale;
+            AnimatorEvents.OnBadJumpEnd += ResetTimeScale;
+        }
+
+        private void ResetTimeScale()
+        {
+            _timeScale = Settings.DefaultTimeScale;
+            SetTimeScaleForCurrentObjects();
+        }
+
+        private void SlowDown(Player sender)
+        {
+            _timeScale = Settings.SlowedTimeScale;
+            SetTimeScaleForCurrentObjects();
+        }
+
+        private void SetTimeScaleForCurrentObjects()
+        {
+            for (int i = 0; i < _objects.Count; i++)
+            {
+                _objects[i].TimeScale = _timeScale;
             }
         }
 
@@ -106,6 +142,7 @@ namespace JumpingJack
         protected virtual AutoMotion SpawnObject(AutoMotion prototype, int direction, int heightIndex, Vector2 position)
         {
             var obj = Instantiate(prototype);
+            obj.TimeScale = _timeScale;
             obj.gameObject.name = prototype.gameObject.name;
             obj.Direction = direction;
             obj.Settings = Settings.ObjectSettings;

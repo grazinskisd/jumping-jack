@@ -1337,6 +1337,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectPrefab: {fileID: 114471024532678876, guid: 58d1bbe2cac29564b9f732d04f24af2f,
     type: 2}
+  Player: {fileID: 509130830}
+  AnimatorEvents: {fileID: 465743167}
   Settings: {fileID: 11400000, guid: 39d7970b0b2d63c4282c3f1208c6b200, type: 2}
   HazardSettings: {fileID: 11400000, guid: e9f72e540b6b79b4ba18e9ffb84b7fb1, type: 2}
 --- !u!4 &1327761035
@@ -1855,5 +1857,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObjectPrefab: {fileID: 114332354284077120, guid: 6fce8de4147371f4a847f5d0032875e4,
     type: 2}
-  Settings: {fileID: 11400000, guid: 04d3d262b0c996740837d444303f55b8, type: 2}
   Player: {fileID: 509130830}
+  AnimatorEvents: {fileID: 465743167}
+  Settings: {fileID: 11400000, guid: 04d3d262b0c996740837d444303f55b8, type: 2}

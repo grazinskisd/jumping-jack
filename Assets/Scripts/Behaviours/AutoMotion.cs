@@ -10,6 +10,7 @@ namespace JumpingJack
         [Tooltip("1: Right; -1: Left")]
         public int Direction;
         public int CurrentHeightIndex;
+        public float TimeScale;
 
         public event AutoMotionEventHandler OnSpawnPointReached;
         public event AutoMotionEventHandler OnDestroyReached;
@@ -23,7 +24,7 @@ namespace JumpingJack
 
         private void Update()
         {
-            transform.Translate(Vector3.right * Direction * Settings.MoveSpeed * Time.deltaTime);
+            transform.Translate(Vector3.right * Direction * Settings.MoveSpeed * Time.deltaTime * TimeScale);
 
             if (!_isNextSpawned && transform.position.x * Direction >= Settings.RightEnd - Settings.SpawnDistance)
             {

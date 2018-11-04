@@ -5,8 +5,6 @@ namespace JumpingJack
 {
     public class HolesController: AutoMotionController
     {
-        public Player Player;
-
         private List<AutoMotion> _holes = new List<AutoMotion>();
         private int _holeCount = 0;
         private int _startHeight = 0;

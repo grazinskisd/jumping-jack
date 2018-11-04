@@ -9,5 +9,7 @@ namespace JumpingJack
         public int ObjectCountCap;
         public PositionsScriptable Heights;
         public MovingObjectSettings ObjectSettings;
+        public float DefaultTimeScale;
+        public float SlowedTimeScale;
     }
 }
