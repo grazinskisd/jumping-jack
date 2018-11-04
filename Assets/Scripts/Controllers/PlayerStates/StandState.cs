@@ -46,7 +46,7 @@ namespace JumpingJack
 
         private bool AreInputArrowsDown()
         {
-            return Input.GetKeyDown(_player.Settings.MoveLeft) || Input.GetKeyDown(_player.Settings.MoveRight);
+            return Input.GetKey(_player.Settings.MoveLeft) || Input.GetKey(_player.Settings.MoveRight);
         }
     }
 }

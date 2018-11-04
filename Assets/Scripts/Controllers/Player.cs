@@ -64,15 +64,16 @@ namespace JumpingJack
             SetupStateListeners(_stateMachine.Stun, OnStun);
 
             SwitchState(_stateMachine.Stand);
+            Animator.ResetTrigger(Triggers.Stand.ToString());
         }
 
         private void SetupStateListeners(PlayerState state, PlayerEventHanlder eventOnStart)
         {
-            IssueEventOnStateEnter(state, eventOnStart);
+            AddEnterListener(state, eventOnStart);
             AddExitListener(state);
         }
 
-        private void IssueEventOnStateEnter(PlayerState state, PlayerEventHanlder eventToIssue)
+        private void AddEnterListener(PlayerState state, PlayerEventHanlder eventToIssue)
         {
             state.OnEnter += () => IssueEvent(eventToIssue);
         }
@@ -134,6 +135,7 @@ namespace JumpingJack
         {
             if (eventToIssue != null)
             {
+            Debug.Log("Issuing: " + eventToIssue.ToString());
                 eventToIssue(this);
             }
         }
