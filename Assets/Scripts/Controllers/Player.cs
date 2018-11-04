@@ -55,6 +55,7 @@ namespace JumpingJack
             _stateMachine.Move = new MoveState(this, _stateMachine);
             _stateMachine.Fall = new FallState(this, _stateMachine);
             _stateMachine.Stun = new StunState(this, _stateMachine);
+            _stateMachine.TopReached = new PlayerState(this, _stateMachine);
 
             AddExitListener(_stateMachine.Stand);
             AddExitListener(_stateMachine.Jump);
@@ -63,15 +64,32 @@ namespace JumpingJack
             AddExitListener(_stateMachine.Fall);
             AddExitListener(_stateMachine.Stun);
 
+            AddCheckForGroundFloor(_stateMachine.BadJump);
+            AddCheckForGroundFloor(_stateMachine.Fall);
+
             _stateMachine.Stand.OnEnter += () => IssueEvent(OnStand);
             _stateMachine.Jump.OnEnter += () => IssueEvent(OnJump);
             _stateMachine.BadJump.OnEnter += () => IssueEvent(OnBadJump);
             _stateMachine.Move.OnEnter += () => IssueEvent(OnMove);
             _stateMachine.Fall.OnEnter += () => IssueEvent(OnFall);
             _stateMachine.Stun.OnEnter += () => IssueEvent(OnStun);
+            _stateMachine.TopReached.OnEnter += () => IssueEvent(OnTopReached);
 
             SwitchState(_stateMachine.Stand);
             Animator.ResetTrigger(Triggers.Stand.ToString());
+        }
+
+        private void CheckIfGroundFloor(PlayerState nextState)
+        {
+            if(CurrentHeightIndex == 0)
+            {
+                IssueEvent(OnGroundReached);
+            }
+        }
+
+        private void AddCheckForGroundFloor(PlayerState state)
+        {
+            state.OnExit += CheckIfGroundFloor;
         }
 
         private void AddExitListener(PlayerState state)
@@ -138,22 +156,5 @@ namespace JumpingJack
                 eventToIssue(this);
             }
         }
-    }
-
-    public enum Triggers
-    {
-        Jump,
-        Stand,
-        BadJump,
-        RunLeft,
-        RunRight,
-        Stun,
-        Fall
-    }
-
-    public enum Floats
-    {
-        JumpSpeed,
-        FallSpeed
     }
 }

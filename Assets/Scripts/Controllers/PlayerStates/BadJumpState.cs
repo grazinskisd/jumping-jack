@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace JumpingJack
+﻿namespace JumpingJack
 {
     public class BadJumpState : PlayerState
     {

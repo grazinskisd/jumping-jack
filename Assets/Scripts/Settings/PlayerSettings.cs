@@ -7,7 +7,6 @@ namespace JumpingJack
     {
         [Header("Moving properties")]
         public PositionsScriptable Heights;
-        public float VerticalMoveDuration;
         public float MoveSpeed;
         public KeyCode MoveLeft;
         public KeyCode MoveRight;

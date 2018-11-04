@@ -43,6 +43,16 @@ namespace JumpingJack
                 .OnComplete(() => Exit(_states.Stand));
         }
 
+        public override void Exit(PlayerState nextState)
+        {
+            base.Exit(TopFloor() ? _states.TopReached : nextState);
+        }
+
+        private bool TopFloor()
+        {
+            return _player.CurrentHeightIndex == _player.Settings.Heights.Positions.Length - 1;
+        }
+
         private void IncrementHeightIndex()
         {
             _player.PreviousHeightIndex = _player.CurrentHeightIndex;

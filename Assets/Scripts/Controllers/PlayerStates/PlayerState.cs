@@ -3,7 +3,7 @@
     public delegate void PlayerStateEventHandler();
     public delegate void PlayerStateExitHandler(PlayerState nextState);
 
-    public abstract class PlayerState
+    public class PlayerState
     {
         public event PlayerStateEventHandler OnEnter;
         public event PlayerStateExitHandler OnExit;

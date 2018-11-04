@@ -8,5 +8,6 @@
         public PlayerState Fall;
         public PlayerState Stun;
         public PlayerState BadJump;
+        public PlayerState TopReached;
     }
 }
