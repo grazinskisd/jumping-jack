@@ -56,26 +56,22 @@ namespace JumpingJack
             _stateMachine.Fall = new FallState(this, _stateMachine);
             _stateMachine.Stun = new StunState(this, _stateMachine);
 
-            SetupStateListeners(_stateMachine.Stand, OnStand);
-            SetupStateListeners(_stateMachine.Jump, OnJump);
-            SetupStateListeners(_stateMachine.BadJump, OnBadJump);
-            SetupStateListeners(_stateMachine.Move, OnMove);
-            SetupStateListeners(_stateMachine.Fall, OnFall);
-            SetupStateListeners(_stateMachine.Stun, OnStun);
+            AddExitListener(_stateMachine.Stand);
+            AddExitListener(_stateMachine.Jump);
+            AddExitListener(_stateMachine.BadJump);
+            AddExitListener(_stateMachine.Move);
+            AddExitListener(_stateMachine.Fall);
+            AddExitListener(_stateMachine.Stun);
+
+            _stateMachine.Stand.OnEnter += () => IssueEvent(OnStand);
+            _stateMachine.Jump.OnEnter += () => IssueEvent(OnJump);
+            _stateMachine.BadJump.OnEnter += () => IssueEvent(OnBadJump);
+            _stateMachine.Move.OnEnter += () => IssueEvent(OnMove);
+            _stateMachine.Fall.OnEnter += () => IssueEvent(OnFall);
+            _stateMachine.Stun.OnEnter += () => IssueEvent(OnStun);
 
             SwitchState(_stateMachine.Stand);
             Animator.ResetTrigger(Triggers.Stand.ToString());
-        }
-
-        private void SetupStateListeners(PlayerState state, PlayerEventHanlder eventOnStart)
-        {
-            AddEnterListener(state, eventOnStart);
-            AddExitListener(state);
-        }
-
-        private void AddEnterListener(PlayerState state, PlayerEventHanlder eventToIssue)
-        {
-            state.OnEnter += () => IssueEvent(eventToIssue);
         }
 
         private void AddExitListener(PlayerState state)
@@ -122,8 +118,12 @@ namespace JumpingJack
 
         public void Trigger(Triggers trigger)
         {
-            Debug.Log("Move trigger: " + trigger);
             Animator.SetTrigger(trigger.ToString());
+        }
+
+        public float GetFloat(Floats animatorFloat)
+        {
+            return Animator.GetFloat(animatorFloat.ToString());
         }
 
         private bool HasHole(Vector2 direction)
@@ -135,7 +135,6 @@ namespace JumpingJack
         {
             if (eventToIssue != null)
             {
-            Debug.Log("Issuing: " + eventToIssue.ToString());
                 eventToIssue(this);
             }
         }
@@ -150,5 +149,11 @@ namespace JumpingJack
         RunRight,
         Stun,
         Fall
+    }
+
+    public enum Floats
+    {
+        JumpSpeed,
+        FallSpeed
     }
 }

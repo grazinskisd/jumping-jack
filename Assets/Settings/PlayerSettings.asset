@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: PlayerSettings
   m_EditorClassIdentifier: 
   Heights: {fileID: 11400000, guid: 3ec18452f034cb8449bad6c697c59506, type: 2}
-  VerticalMoveDuration: 0.3
+  VerticalMoveDuration: 0.6
   MoveSpeed: 4
   MoveLeft: 276
   MoveRight: 275
@@ -24,7 +24,3 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   StunTime: 1.5
-  BadJumpDelay: 0.2
-  ShakeDuration: 0.2
-  ShakeStrength: 1
-  ShakeVibrato: 100

@@ -14,7 +14,6 @@ namespace JumpingJack
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("Enter Move state");
             _player.OnHitHazard += GoToStunState;
             SetDirection();
         }

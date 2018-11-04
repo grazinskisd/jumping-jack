@@ -5,6 +5,8 @@ namespace JumpingJack
 {
     public class JumpState : PlayerState
     {
+        private const string JUMP_ANIMATION = "Jump";
+
         private float _duration;
 
         public JumpState(Player player, PlayerStateMachine states)
@@ -12,7 +14,6 @@ namespace JumpingJack
 
         public override void Enter()
         {
-            Debug.Log("Enter Jump state");
             _player.Trigger(Triggers.Jump);
             SetDuration();
             IncrementHeightIndex();
@@ -23,11 +24,11 @@ namespace JumpingJack
         private void SetDuration()
         {
             var animator = _player.Animator.runtimeAnimatorController;
-            foreach(var anim in animator.animationClips)
+            foreach (var anim in animator.animationClips)
             {
-                if (anim.name.Equals("Jump"))
+                if (anim.name.Equals(JUMP_ANIMATION))
                 {
-                    _duration = anim.length;
+                    _duration = anim.length / _player.GetFloat(Floats.JumpSpeed);
                     break;
                 }
             }

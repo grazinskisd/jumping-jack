@@ -11,7 +11,6 @@ namespace JumpingJack
 
         public override void Enter()
         {
-            Debug.Log("Enter BadJump state");
             _player.Trigger(Triggers.BadJump);
             _player.AnimationEvents.OnBadJumpEnd += GoToStunState;
             base.Enter();

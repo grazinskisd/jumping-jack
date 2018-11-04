@@ -5,7 +5,7 @@ namespace JumpingJack
 {
     public class FallState : PlayerState
     {
-        private int _direction;
+        private const string FALL_ANIMATION = "Fall";
         private float _duration;
 
         public FallState(Player player, PlayerStateMachine states)
@@ -13,7 +13,6 @@ namespace JumpingJack
 
         public override void Enter()
         {
-            Debug.Log("Enter Fall state");
             _player.Trigger(Triggers.Fall);
             SetDuration();
             DecrementHeightIndex();
@@ -21,23 +20,23 @@ namespace JumpingJack
             base.Enter();
         }
 
-        private void DecrementHeightIndex()
-        {
-            _player.PreviousHeightIndex = _player.CurrentHeightIndex;
-            _player.CurrentHeightIndex = Mathf.Max(_player.CurrentHeightIndex - 1, 0);
-        }
-
         private void SetDuration()
         {
             var animator = _player.Animator.runtimeAnimatorController;
             foreach (var anim in animator.animationClips)
             {
-                if (anim.name.Equals("Fall"))
+                if (anim.name.Equals(FALL_ANIMATION))
                 {
-                    _duration = anim.length;
+                    _duration = anim.length / _player.GetFloat(Floats.FallSpeed);
                     break;
                 }
             }
+        }
+
+        private void DecrementHeightIndex()
+        {
+            _player.PreviousHeightIndex = _player.CurrentHeightIndex;
+            _player.CurrentHeightIndex = Mathf.Max(_player.CurrentHeightIndex - 1, 0);
         }
 
         private void MovePlayerVertically()

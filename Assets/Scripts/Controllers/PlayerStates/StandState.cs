@@ -11,7 +11,6 @@ namespace JumpingJack
 
         public override void Enter()
         {
-            Debug.Log("Enter Stand state");
             _player.Trigger(Triggers.Stand);
             _player.OnHitHazard += GoToStunState;
             base.Enter();

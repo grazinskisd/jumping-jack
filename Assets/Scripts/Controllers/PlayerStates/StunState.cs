@@ -11,7 +11,6 @@ namespace JumpingJack
 
         public override void Enter()
         {
-            Debug.Log("Enter Stun state");
             _elapsedTime = 0.0f;
             _player.Trigger(Triggers.Stun);
             _player.OnHitHazard += GoToStunState;
