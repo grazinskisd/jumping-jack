@@ -16,4 +16,4 @@ MonoBehaviour:
   Heights: {fileID: 11400000, guid: 0bb1b81cd516fb940a50dcad3156f74a, type: 2}
   ObjectSettings: {fileID: 11400000, guid: 7e4799c0ce4d5734395b5ae89eaddc73, type: 2}
   DefaultTimeScale: 1
-  SlowedTimeScale: 0.2
+  SlowedTimeScale: 0.3
