@@ -66,7 +66,7 @@ namespace JumpingJack
         {
             var pair = _positions[_currentIndex];
             _currentIndex++;
-            return SpawnObject(_direction, pair.Height, pair.Position);
+            return SpawnObject(_direction, pair.Height, pair.Position + HazardSettings.PositionOffset);
         }
 
         protected override int GetStartHeight()
@@ -122,11 +122,6 @@ namespace JumpingJack
         protected override int GetNumberOfObjectsOnStart()
         {
             return _prefService.GetInt(Prefs.Hazards);
-        }
-
-        protected override Vector2 GetRandomPosition()
-        {
-            return base.GetRandomPosition() + HazardSettings.PositionOffset;
         }
 
         protected override Vector2 GetNextSpawnPosition(AutoMotion sender)
