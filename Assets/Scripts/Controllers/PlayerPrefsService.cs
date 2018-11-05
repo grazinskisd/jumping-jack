@@ -79,14 +79,4 @@ namespace JumpingJack
             SetInt(Prefs.Lives, StartLifeCount);
         }
     }
-
-    public enum Prefs
-    {
-        Level,
-        Hazards,
-        Score,
-        Highscore,
-        Lives,
-        GodMode
-    }
 }
