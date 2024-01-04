@@ -1,91 +1,61 @@
-<h1>Clone of Jumping Jack for ZX Spectrum</h1>
-<h3>BUILD INFORMATION</h3>
-<hr>
-<p>Built with Unity 2018.2.2f1 Personal(64bit) on Windows 10.</p>
-<p><strong>Launching the game options:</strong></p>
-<ol>
-<li>Prod-Build folder should contain a built project that you should be able to run
-<ol>
-<li>Go to /Prod-Build/ and double click on JumpingJack.exe</li>
-</ol>
-</li>
-<li>Download build
-<ol>
-<li>Download file at <a href="https://drive.google.com/open?id=1TZ2wjztn5NSjZRHxSR52ry0OdHdtmsxg">Google Drive Link</a></li>
-<li>Extract the project</li>
-<li>Go to /Prod-Build/ and double click on JumpingJack.exe</li>
-</ol>
-</li>
-<li>Build project yourself or launch it in the Unity editor
-<ol>
-<li>Download and install the correct Unity build at <a href="https://unity3d.com/get-unity/download?thank-you=update&amp;download_nid=57864&amp;os=Win">Unity Download Archive</a></li>
-<li>Clone this repository</li>
-<li>Open the project in Unity</li>
-<li>Play in editor or build and run</li>
-</ol>
-</li>
-</ol>
-<h3>CONTROLS</h3>
-<hr>
-<p><strong>Player Controls:</strong></p>
-<ul>
-<li>[Left Arrow]  - Move Left</li>
-<li>[Right Arrow] - Move Right</li>
-<li>[Up Arrow]    - Move Up</li>
-</ul>
-<p><strong>Game Controls:</strong></p>
-<ul>
-<li>[Escape]  - Exit game</li>
-<li>[Space]   - Restart game</li>
-</ul>
-<p><strong>Cheats:</strong></p>
-<ul>
-<li>[G]   - God Mode
-<ul>
-<li>Press [G] in the introduction screen to set God Mode.</li>
-<li>God Mode allows you to move without reacting to holes or hazards.</li>
-<li>With God Mode you can quickly test if the whole game is there.</li>
-</ul>
-</li>
-<li>[A]   - Level selection
-<ul>
-<li>Press [A] in the introduction scene to activate.</li>
-<li>A display of current level will appear at the top of the screen.</li>
-<li>Continue pressing [A] to get to desired level, in range (1..20).</li>
-<li>Game will not automatically start after activating this, so
-you need to press [Enter] when you are satisfied with your selection.</li>
-<li>With this cheat you can test a specific level.</li>
-</ul>
-</li>
-<li>These cheat can be activated separately or together.</li>
-<li>In case you want to reset, select a different cheat combination
-or don't want to use cheats, just press [Space] to restart the game.</li>
-</ul>
-<h3>Project Layout</h3>
-<hr>
-<p>Information about some more important files</p>
-<ul>
-<li><em>/Animations/</em> - Contains all animations</li>
-<li><em>/Audio/</em> - "DoTween" plug-in folder</li>
-<li><em>/Fonts/</em> - Imported fonts</li>
-<li><em>/Prefabs/</em> - Prefabs, not very important since most things are contained in the scenes</li>
-<li><em>/Resources/</em> - for "DoTween" plug-in</li>
-<li><strong>/Scenes/</strong> - All scenes
-<ul>
-<li><em>EndScene</em> - Scene displayed when you loose or complete all 20 levels</li>
-<li><em>GameScene</em> - Scene where the game happens</li>
-<li><em>IntroScene</em> - First scene loaded on game start/restart</li>
-<li><em>NextLevelScene</em> - Scene displayed in between game levels</li>
-</ul>
-</li>
-<li><strong>/Scripts/</strong> - All code
-<ul>
-<li><em>Behaviours</em> - Small self-containing behaviours that are usually used by a controller</li>
-<li><em>Controllers</em> - Code for controlling the game</li>
-<li><em>Settings</em> - Code for scriptable objects that are used as settings</li>
-<li><em>Utils</em> - Place for enums and generic utilities</li>
-</ul>
-</li>
-<li><em>/Settings/</em> - Scriptable objects that contain game settings</li>
-<li><em>/Textures/</em> - All textures</li>
-</ul>
+Clone of Jumping Jack for ZX Spectrum
+BUILD INFORMATION
+Built with Unity 2018.2.2f1 Personal(64bit) on Windows 10.
+
+Launching the game options:
+
+Prod-Build folder should contain a built project that you should be able to run
+Go to /Prod-Build/ and double click on JumpingJack.exe
+Download build
+Download file at Google Drive Link
+Extract the project
+Go to /Prod-Build/ and double click on JumpingJack.exe
+Build project yourself or launch it in the Unity editor
+Download and install the correct Unity build at Unity Download Archive
+Clone this repository
+Open the project in Unity
+Play in editor or build and run
+CONTROLS
+Player Controls:
+
+[Left Arrow] - Move Left
+[Right Arrow] - Move Right
+[Up Arrow] - Move Up
+Game Controls:
+
+[Escape] - Exit game
+[Space] - Restart game
+Cheats:
+
+[G] - God Mode
+Press [G] in the introduction screen to set God Mode.
+God Mode allows you to move without reacting to holes or hazards.
+With God Mode you can quickly test if the whole game is there.
+[A] - Level selection
+Press [A] in the introduction scene to activate.
+A display of the current level will appear at the top of the screen.
+Continue pressing [A] to get to the desired level, in range (1..20).
+The game will not automatically start after activating this, so you need to press [Enter] when you are satisfied with your selection.
+With this cheat, you can test a specific level.
+These cheats can be activated separately or together.
+In case you want to reset, select a different cheat combination or don't want to use cheats, just press [Space] to restart the game.
+Project Layout
+Information about some more important files
+
+/Animations/ - Contains all animations
+/Audio/ - "DoTween" plug-in folder
+/Fonts/ - Imported fonts
+/Prefabs/ - Prefabs, not very important since most things are contained in the scenes
+/Resources/ - for "DoTween" plug-in
+/Scenes/ - All scenes
+EndScene - Scene displayed when you lose or complete all 20 levels
+GameScene - Scene where the game happens
+IntroScene - First scene loaded on game start/restart
+NextLevelScene - Scene displayed in between game levels
+/Scripts/ - All code
+Behaviours - Small self-containing behaviours that are usually used by a controller
+Controllers - Code for controlling the game
+Settings - Code for scriptable objects that are used as settings
+Utils - Place for enums and generic utilities
+/Settings/ - Scriptable objects that contain game settings
+/Textures/ - All textures
