@@ -34,7 +34,7 @@ These cheats can be activated separately or together.
 In case you want to reset, select a different cheat combination or don't want to use cheats, just press [Space] to restart the game.
 Project Layout
 
-Information about some more important files
+Information about some more important files:
 /Animations/ - Contains all animations
 /Audio/ - "DoTween" plug-in folder
 /Fonts/ - Imported fonts
