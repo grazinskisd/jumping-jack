@@ -5,6 +5,7 @@ Clone of Jumping Jack for ZX Spectrum
 
 BUILD INFORMATION
 Built with Unity 2018.2.2f1 Personal(64bit) on Windows 10.
+Play at: https://dalius.itch.io/jumping-jack-clone
 
 CONTROLS
 Player Controls:
