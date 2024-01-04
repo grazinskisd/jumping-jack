@@ -1,5 +1,8 @@
 Clone of Jumping Jack for ZX Spectrum
 
+![image](https://github.com/grazinskisd/jumping-jack/assets/7268374/876c7775-cfa0-4a6a-bb2e-b759e1e2ab0c)
+
+
 BUILD INFORMATION
 Built with Unity 2018.2.2f1 Personal(64bit) on Windows 10.
 
